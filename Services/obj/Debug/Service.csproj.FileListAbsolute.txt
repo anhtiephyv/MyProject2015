@@ -1,0 +1,9 @@
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\obj\Debug\Service.csprojResolveAssemblyReference.cache
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\bin\Debug\Services.dll
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\bin\Debug\Services.pdb
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\bin\Debug\Data.dll
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\bin\Debug\EntityFramework.dll
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\bin\Debug\Data.pdb
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\bin\Debug\EntityFramework.xml
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\obj\Debug\Services.dll
+c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\obj\Debug\Services.pdb
