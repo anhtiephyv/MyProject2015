@@ -16,6 +16,8 @@ namespace Data.Models
         [StringLength(50)]
         [Required]
         public string UserName { get; set; }
+        [StringLength(100)]
+        public string PasswordHash { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }

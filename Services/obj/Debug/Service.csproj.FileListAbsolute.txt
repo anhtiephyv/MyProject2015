@@ -7,3 +7,12 @@ c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\bin\Debug
 c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\bin\Debug\EntityFramework.xml
 c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\obj\Debug\Services.dll
 c:\users\mypc\documents\visual studio 2015\Projects\MyProject\Services\obj\Debug\Services.pdb
+D:\MyProject\MyProject2015\Services\bin\Debug\Services.dll
+D:\MyProject\MyProject2015\Services\bin\Debug\Services.pdb
+D:\MyProject\MyProject2015\Services\bin\Debug\Data.dll
+D:\MyProject\MyProject2015\Services\bin\Debug\EntityFramework.dll
+D:\MyProject\MyProject2015\Services\bin\Debug\Data.pdb
+D:\MyProject\MyProject2015\Services\bin\Debug\EntityFramework.xml
+D:\MyProject\MyProject2015\Services\obj\Debug\Service.csprojResolveAssemblyReference.cache
+D:\MyProject\MyProject2015\Services\obj\Debug\Services.dll
+D:\MyProject\MyProject2015\Services\obj\Debug\Services.pdb

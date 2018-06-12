@@ -54,9 +54,9 @@
     <Compile Include="Base\IUnitOfWork.cs" />
     <Compile Include="Base\UnitOfWork .cs" />
     <Compile Include="DBContext\MyShopDBContext.cs" />
-    <Compile Include="Migrations\201806030646255_create-db.cs" />
-    <Compile Include="Migrations\201806030646255_create-db.Designer.cs">
-      <DependentUpon>201806030646255_create-db.cs</DependentUpon>
+    <Compile Include="Migrations\201806111419330_InitialCreate.cs" />
+    <Compile Include="Migrations\201806111419330_InitialCreate.Designer.cs">
+      <DependentUpon>201806111419330_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -70,8 +70,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806030646255_create-db.resx">
-      <DependentUpon>201806030646255_create-db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806111419330_InitialCreate.resx">
+      <DependentUpon>201806111419330_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

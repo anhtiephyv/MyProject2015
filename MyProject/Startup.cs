@@ -32,11 +32,8 @@ namespace MyProject
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
             // Register your Web API controllers.
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()); //Register WebApi Controllers
-
+            // Register UnitofWork and DBContext
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
-            //  builder.RegisterType<I>().As<IDbFactory>().InstancePerRequest();
-            builder.RegisterType<AdminService>().As<IAdminService>().InstancePerRequest();
-            builder.RegisterType<AdminRepository>().As<IAdminRepository>().InstancePerRequest();
             builder.RegisterType<MyShopDBContext>().AsSelf().InstancePerRequest();
 
             ////Asp.net Identity
@@ -58,9 +55,9 @@ namespace MyProject
                .AsImplementedInterfaces().InstancePerRequest();
 
             Autofac.IContainer container = builder.Build();
-            //DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-          //  GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); //Set the WebApi DependencyResolver
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); //Set the WebApi DependencyResolver
 
         }
     }

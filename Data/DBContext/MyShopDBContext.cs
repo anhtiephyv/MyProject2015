@@ -8,7 +8,7 @@ namespace Data.DBContext
 {
     public class MyShopDBContext : DbContext
     {
-        public MyShopDBContext(): base("MyShopConectionString")
+        public MyShopDBContext(): base("MyShop")
         {
 
         }
