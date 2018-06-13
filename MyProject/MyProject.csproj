@@ -727,6 +727,8 @@
     <Content Include="app\Content\js\xcharts.min.js" />
     <Content Include="app\Body.html" />
     <Content Include="app\hearder.html" />
+    <Content Include="app\home\homeView.html" />
+    <Content Include="app\home\homeController.js" />
     <Content Include="app\Include\sidebar.html" />
     <Content Include="app\Include\headder.html" />
     <Content Include="app\index.html" />
@@ -1475,6 +1477,9 @@
   <ItemGroup>
     <Folder Include="app\Admin\" />
     <Folder Include="app\Content\assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="app\Extension\factory\" />
+    <Folder Include="app\Extension\provider\" />
+    <Folder Include="app\Extension\service\" />
     <Folder Include="app\Template\NiceAdmin\assets\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="App_Data\" />
   </ItemGroup>

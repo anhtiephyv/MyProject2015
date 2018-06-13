@@ -7,7 +7,7 @@
   <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template"/>
   <meta name="author" content="GeeksLabs"/>
   <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal"/>
-  <link rel="shortcut icon" href="img/favicon.png"/>
+  <link rel="shortcut icon" href="Content/img/favicon.png"/>
 
   <title>Creative - Bootstrap Admin Template</title>
 
@@ -44,10 +44,6 @@
   <script src="Content/js/angular-resource.js"></script>
   <script src="Content/js/angular-ui-router.js"></script>
   <script src="appConfig.js"></script>
-</head>
-
-<body ng-app="MyApp">
-
   <!-- javascripts -->
   <script src="Content/js/jquery.js"></script>
   <script src="Content/js/jquery-ui-1.10.4.min.js"></script>
@@ -65,77 +61,86 @@
   <script src="Content/js/owl.carousel.js"></script>
   <!-- jQuery full calendar -->
   <script src="Content/js/fullcalendar.min.js"></script>
-    <!-- Full Google Calendar - Calendar -->
-    <script src="Content/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
-    <!--script for this page only-->
-    <script src="Content/js/calendar-custom.js"></script>
-    <script src="Content/js/jquery.rateit.min.js"></script>
-    <!-- custom select -->
-    <script src="Content/js/jquery.customSelect.min.js"></script>
-    <script src="Content/assets/chart-master/Chart.js"></script>
+  <!-- Full Google Calendar - Calendar -->
+  <script src="Content/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+  <!--script for this page only-->
+  <script src="Content/js/calendar-custom.js"></script>
+  <script src="Content/js/jquery.rateit.min.js"></script>
+  <!-- custom select -->
+  <script src="Content/js/jquery.customSelect.min.js"></script>
+  <script src="Content/assets/chart-master/Chart.js"></script>
 
-    <!--custome script for all page-->
-    <script src="Content/js/scripts.js"></script>
-    <!-- custom script for this page-->
-    <script src="Content/js/sparkline-chart.js"></script>
-    <script src="Content/js/easy-pie-chart.js"></script>
-    <script src="Content/js/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="Content/js/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="Content/js/xcharts.min.js"></script>
-    <script src="Content/js/jquery.autosize.min.js"></script>
-    <script src="Content/js/jquery.placeholder.min.js"></script>
-    <script src="Content/js/gdp-data.js"></script>
-    <script src="Content/js/morris.min.js"></script>
-    <script src="Content/js/sparklines.js"></script>
-    <script src="Content/js/charts.js"></script>
-    <script src="Content/js/jquery.slimscroll.min.js"></script>
-    <script>
-      //knob
-      $(function() {
-        $(".knob").knob({
-          'draw': function() {
-            $(this.i).val(this.cv + '%')
-          }
-        })
-      });
+  <!--custome script for all page-->
+  <script src="Content/js/scripts.js"></script>
+  <!-- custom script for this page-->
+  <script src="Content/js/sparkline-chart.js"></script>
+  <script src="Content/js/easy-pie-chart.js"></script>
+  <script src="Content/js/jquery-jvectormap-1.2.2.min.js"></script>
+  <script src="Content/js/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="Content/js/xcharts.min.js"></script>
+  <script src="Content/js/jquery.autosize.min.js"></script>
+  <script src="Content/js/jquery.placeholder.min.js"></script>
+  <script src="Content/js/gdp-data.js"></script>
+  <script src="Content/js/morris.min.js"></script>
+  <script src="Content/js/sparklines.js"></script>
+  <script src="Content/js/charts.js"></script>
+  <script src="Content/js/jquery.slimscroll.min.js"></script>
+  <script src="login/loginController.js"></script>
+  <script src="home/homeController.js"></script>
+  <script>
+    //knob
+    $(function() {
+    $(".knob").knob({
+    'draw': function() {
+    $(this.i).val(this.cv + '%')
+    }
+    })
+    });
 
-      //carousel
-      $(document).ready(function() {
-        $("#owl-slider").owlCarousel({
-          navigation: true,
-          slideSpeed: 300,
-          paginationSpeed: 400,
-          singleItem: true
+    //carousel
+    $(document).ready(function() {
+    $("#owl-slider").owlCarousel({
+    navigation: true,
+    slideSpeed: 300,
+    paginationSpeed: 400,
+    singleItem: true
 
-        });
-      });
+    });
+    });
 
-      //custom select box
+    //custom select box
 
-      $(function() {
-        $('select.styled').customSelect();
-      });
+    $(function() {
+    $('select.styled').customSelect();
+    });
 
-      /* ---------- Map ---------- */
-      $(function() {
-        $('#map').vectorMap({
-          map: 'world_mill_en',
-          series: {
-            regions: [{
-              values: gdpData,
-              scale: ['#000', '#000'],
-              normalizeFunction: 'polynomial'
-            }]
-          },
-          backgroundColor: '#eef3f7',
-          onLabelShow: function(e, el, code) {
-            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-          }
-        });
-      });
-    </script>
-    <div ng-include="'Include/headder.html'"></div>
-  <div ng-include="'Include/sidebar.html'"></div>
+    /* ---------- Map ---------- */
+    $(function() {
+    $('#map').vectorMap({
+    map: 'world_mill_en',
+    series: {
+    regions: [{
+    values: gdpData,
+    scale: ['#000', '#000'],
+    normalizeFunction: 'polynomial'
+    }]
+    },
+    backgroundColor: '#eef3f7',
+    onLabelShow: function(e, el, code) {
+    el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+    }
+    });
+    });
+  </script>
+</head>
+
+<body ng-app="MyApp">
+
+
+  <div ui-view="">
+
+  </div>
+
 </body>
 
 </html>

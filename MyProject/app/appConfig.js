@@ -13,27 +13,6 @@
 //        .config(configAuthentication);
 
 //	config.$inject = ['$stateProvider', '$urlRouterProvider'];
-
-//	function config($stateProvider, $urlRouterProvider) {
-//		$stateProvider
-//            .state('base', {
-//            	url: '',
-//            	templateUrl: '/app/index.html',
-//            	abstract: true
-//            }).state('login', {
-//            	url: "/login",
-//            	templateUrl: "/app/components/login/loginView.html",
-//            	controller: "loginController"
-//            })
-//            .state('home', {
-//            	url: "/admin",
-//            	parent: 'base',
-//            	templateUrl: "/app/components/home/homeView.html",
-//            	controller: "homeController"
-//            });
-//		$urlRouterProvider.otherwise('/login');
-//	}
-
 //	function configAuthentication($httpProvider) {
 //		$httpProvider.interceptors.push(function ($q, $location) {
 //			return {
@@ -64,7 +43,9 @@
 //	}
 //})();
 var app = angular.module("MyApp", ["ngResource", "ui.router"]);
+
 app.config(config);
+config.$inject = ['$stateProvider', '$urlRouterProvider'];
 function config($stateProvider, $urlRouterProvider) {
 	debugger;
 		$stateProvider
@@ -76,8 +57,8 @@ function config($stateProvider, $urlRouterProvider) {
             .state('home', {
             	url: "/admin",
             	parent: 'base',
-            	templateUrl: "/app/components/home/homeView.html",
+            	templateUrl: "/app/home/homeView.html",
             	controller: "homeController"
             });
 		$urlRouterProvider.otherwise('/login');
-	}
+} 

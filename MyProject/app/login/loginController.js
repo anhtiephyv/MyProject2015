@@ -1,7 +1,8 @@
 (function (app) {
-	app.controller('loginController', ['$scope', 'loginService', '$injector', 'notificationService',
+	debugger;
+	app.controller('loginController', ['$scope', 
         function ($scope, loginService, $injector, notificationService) {
-
+        	debugger;
         	$scope.loginData = {
         		userName: "",
         		password: ""
@@ -19,4 +20,5 @@
         	//	});
         	//}
         }]);
-})(angular.module('MyApp'));
+})
+(angular.module('MyApp'), []);
