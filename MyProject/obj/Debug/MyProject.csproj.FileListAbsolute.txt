@@ -194,3 +194,8 @@ D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.MicrosoftAccoun
 D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.dll
 D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.pdb
+D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Cors.dll
+D:\MyProject\MyProject2015\MyProject\bin\System.Web.Cors.dll
+D:\MyProject\MyProject2015\MyProject\bin\System.Web.Http.Owin.dll
+D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Cors.xml
+D:\MyProject\MyProject2015\MyProject\bin\System.Web.Http.Owin.xml

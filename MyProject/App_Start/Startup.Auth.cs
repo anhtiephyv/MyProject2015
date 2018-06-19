@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -6,6 +7,17 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using MyProject.Models;
+using Microsoft.Owin.Cors;
+using Microsoft.Owin.Security.OAuth;
+using System.Web.Http.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+
+using Microsoft.Owin.Security;
+using MyProject.Api;
 
 namespace MyProject
 {
@@ -63,6 +75,17 @@ namespace MyProject
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+            app.UseCors(CorsOptions.AllowAll);
+            OAuthAuthorizationServerOptions options = new OAuthAuthorizationServerOptions
+            {
+                TokenEndpointPath = new PathString("/token"),
+                Provider = new ApplicationOAuthProviderController(),
+             //   AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                AllowInsecureHttp = true
+            };
+            app.UseOAuthAuthorizationServer(options);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
         }
     }
 }

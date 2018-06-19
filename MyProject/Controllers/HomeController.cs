@@ -8,14 +8,14 @@ namespace MyProject.Controllers
 {
     public class HomeController : Controller
     {
-        private IAdminService _adminService;
-        public HomeController(IAdminService AdminService)
-        {
-            _adminService = AdminService;
-        }
+        //private IAdminService _adminService;
+        //public HomeController(IAdminService AdminService)
+        //{
+        //    _adminService = AdminService;
+        //}
         public ActionResult Index()
         {
-            var check = _adminService.GetAll().ToList();
+          //  var check = _adminService.GetAll().ToList();
             return View();
         }
 

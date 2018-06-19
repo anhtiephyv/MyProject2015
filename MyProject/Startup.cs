@@ -13,8 +13,13 @@ using Microsoft.Owin.Security.DataProtection;
 using System.Web;
 using Data.DBContext;
 using Data.Repository;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Data.Base;
 using Service.Service;
+using Data.Models;
+ 
+
 [assembly: OwinStartupAttribute(typeof(MyProject.Startup))]
 namespace MyProject
 {
@@ -36,21 +41,21 @@ namespace MyProject
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<MyShopDBContext>().AsSelf().InstancePerRequest();
 
-            ////Asp.net Identity
-            //builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
-            //builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
-            //builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+           /// Asp.net Identity
+        //    builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
             builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
             builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
 
-            // Repositories
-            builder.RegisterAssemblyTypes(typeof(AdminRepository).Assembly)
+            //Register Repositories
+            builder.RegisterAssemblyTypes(typeof(CategorySerivce).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
 
             // Services
-            builder.RegisterAssemblyTypes(typeof(AdminService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(CategorySerivce).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
 

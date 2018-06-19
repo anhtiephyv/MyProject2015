@@ -6,6 +6,9 @@
     using System.Linq;
     using Data.Models;
     using System.Text;
+    using DBContext;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Data.DBContext.MyShopDBContext>
     {
@@ -21,8 +24,8 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
             // Code khi chạy DB sẽ tự chạy
-            CreateAdmin(context);
-            
+            CreateUser(context);
+
         }
         private string Encryptdata(string password)
         {
@@ -45,20 +48,59 @@
             decryptpwd = new String(decoded_char);
             return decryptpwd;
         }
-        private void CreateAdmin(Data.DBContext.MyShopDBContext context)
+        private void CreateUser(MyShopDBContext context)
         {
-            if(context.Admin.Where(x=> x.UserName == "Administrator").Count() == 0)
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MyShopDBContext()));
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new MyShopDBContext()));
+
+            var user = new ApplicationUser()
             {
-                Admin admin = new Admin();
-                admin.UserName = "Administrator";
-                admin.PasswordHash = Encryptdata("Ab@123456");
-                admin.FirstName = "Nguyễn Văn";
-                admin.LastName = "Tiệp";
-                admin.PhoneNumber = "01654911732";
-                admin.Address = "Đéo có";
-                context.Admin.Add(admin);
-                context.SaveChanges();
+                UserName = "Administrator",
+                Email = "tiepnv022093@gmail.com",
+                EmailConfirmed = true,
+                FirstName = "Nguyễn Văn",
+                LastName = "Tiệp",
+                Level = 1,
+                JoinDate = DateTime.Now
+            };
+            if (manager.Users.Count(x => x.UserName == "Administrator") == 0)
+            {
+                manager.Create(user, "anhtiep123");
+
+                if (!roleManager.Roles.Any())
+                {
+                    roleManager.Create(new IdentityRole { Name = "Admin" });
+                    roleManager.Create(new IdentityRole { Name = "User" });
+                }
+
+                var adminUser = manager.FindByEmail("tiepnv022093@gmail.com.com");
+
+                manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
             }
+
+            //if (context.ApplicationGroups.Count() == 0)
+            //{
+            //    ApplicationGroup group = new ApplicationGroup()
+            //    {
+            //        Name = "Administrator",
+            //        Description = "Nhóm quản trị hệ thống"
+            //    };
+            //    context.ApplicationGroups.Add(group);
+            //    context.ApplicationGroups.Add(new ApplicationGroup()
+            //    {
+            //        Name = "Users",
+            //        Description = "Nhóm người dùng"
+            //    });
+            //    context.SaveChanges();
+            //    var adminUser = manager.FindByEmail("nguyenthe675@gmail.com");
+            //    context.ApplicationUserGroups.Add(new ApplicationUserGroup()
+            //    {
+            //        UserId = adminUser.Id,
+            //        GroupId = group.ID
+            //    });
+            //}
+
         }
     }
 }

@@ -1,7 +1,7 @@
-<body class="login-img3-body" ng-app="MyApp">
+<body class="login-img3-body" ng-app="MyApp" ui-sref="login">
   <div class="container" ng-controller="loginController">
 
-    <form class="login-form" >
+    <form class="login-form" ng-submit="loginSubmit()">
       <div class="login-wrap">
         <p class="login-img">
           <i class="icon_lock_alt"></i>

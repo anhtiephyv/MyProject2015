@@ -16,3 +16,7 @@ D:\MyProject\MyProject2015\Services\bin\Debug\EntityFramework.xml
 D:\MyProject\MyProject2015\Services\obj\Debug\Service.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\Services\obj\Debug\Services.dll
 D:\MyProject\MyProject2015\Services\obj\Debug\Services.pdb
+D:\MyProject\MyProject2015\Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\MyProject\MyProject2015\Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\MyProject\MyProject2015\Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\MyProject\MyProject2015\Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml

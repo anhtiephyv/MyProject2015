@@ -9,7 +9,7 @@ namespace Data.Base
 {
     public interface IUnitOfWork : IDisposable
     {
-        void Dispose();
+       // void Dispose();
         void Save();
         MyShopDBContext Init();
 

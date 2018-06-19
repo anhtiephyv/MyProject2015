@@ -10,22 +10,22 @@ namespace Data.Base
     public class UnitOfWork: IUnitOfWork
     {
         private MyShopDBContext context = new MyShopDBContext();
-        private GenericRepository<Admin> adminRepository;
+      //  private GenericRepository<Admin> adminRepository;
         private GenericRepository<Category> categoryRepository;
 
-        public GenericRepository<Admin> AdminRepository
-        {
-            get
-            {
+        //public GenericRepository<Admin> AdminRepository
+        //{
+        //    get
+        //    {
 
-                if (this.adminRepository == null)
-                {
-                    this.adminRepository = new GenericRepository<Admin>(context);
-                }
-                return adminRepository;
-            }
+        //        if (this.adminRepository == null)
+        //        {
+        //            this.adminRepository = new GenericRepository<Admin>(context);
+        //        }
+        //        return adminRepository;
+        //    }
 
-        }
+        //}
 
         public GenericRepository<Category> CategoryRepository
         {
