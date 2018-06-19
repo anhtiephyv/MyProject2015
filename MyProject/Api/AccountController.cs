@@ -59,20 +59,20 @@ namespace MyProject.Api
                 _userManager = value;
             }
         }
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[Route("login")]
-        //public async Task<HttpResponseMessage> Login(HttpRequestMessage request, string userName, string password, bool rememberMe)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-        //    }
-        //    // This doesn't count login failures towards account lockout
-        //    // To enable password failures to trigger account lockout, change to shouldLockout: true
-        //    var result = await SignInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout: false);
-        //    return request.CreateResponse(HttpStatusCode.OK, result);
-        //}
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("login")]
+        public async Task<HttpResponseMessage> Login(HttpRequestMessage request, string userName, string password, bool rememberMe = false)
+        {
+            if (!ModelState.IsValid)
+            {
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout: false);
+            return request.CreateResponse(HttpStatusCode.OK, result);
+        }
 
         //[HttpPost]
         //[Authorize]

@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace MyProject.Api
 {
@@ -39,6 +40,8 @@ namespace MyProject.Api
             }
             else
             {
+                context.SetError("invalid_grant", "Tài khoản hoặc mật khẩu không đúng.'");
+                context.Rejected();
             
             }
         }

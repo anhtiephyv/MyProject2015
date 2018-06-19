@@ -80,7 +80,7 @@ namespace MyProject
             {
                 TokenEndpointPath = new PathString("/token"),
                 Provider = new ApplicationOAuthProviderController(),
-             //   AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AuthorizeEndpointPath = new PathString("/api/Account/Login"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
                 AllowInsecureHttp = true
             };

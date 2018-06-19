@@ -10,19 +10,21 @@
           <span class="input-group-addon">
             <i class="icon_profile"></i>
           </span>
-          <input type="text" class="form-control" placeholder="Username" ng-model="loginData.userName"/>
+          <input type="text" class="form-control" placeholder="Username" ng-model="loginData.userName" inlength="8" required/>
         </div>
         <div class="input-group">
           <span class="input-group-addon">
             <i class="icon_key_alt"></i>
           </span>
-          <input type="password" class="form-control" placeholder="Password" ng-model="loginData.password"/>
+          <input type="password" class="form-control" placeholder="Password" ng-model="loginData.password" required/>
+
         </div>
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"/> Ghi nhớ
-          <span class="pull-right">
+          <span style="color:red" ng-bind="loginData.message"></span>
+          <!--<input type="checkbox" value="remember-me"/> Ghi nhớ-->
+          <!--<span class="pull-right">
             <a href="#"> Quên mật khẩu?</a>
-          </span>
+          </span>-->
         </label>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Đăng nhập</button>
         <button class="btn btn-info btn-lg btn-block" type="submit">Đăng ký</button>

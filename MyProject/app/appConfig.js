@@ -1,4 +1,4 @@
-
+﻿
 
 //(function () {
 //	angular.module('myProject',
@@ -12,36 +12,7 @@
 //        .config(config)
 //        .config(configAuthentication);
 
-//	config.$inject = ['$stateProvider', '$urlRouterProvider'];
-//	function configAuthentication($httpProvider) {
-//		$httpProvider.interceptors.push(function ($q, $location) {
-//			return {
-//				request: function (config) {
 
-//					return config;
-//				},
-//				requestError: function (rejection) {
-
-//					return $q.reject(rejection);
-//				},
-//				response: function (response) {
-//					if (response.status == "401") {
-//						$location.path('/login');
-//					}
-//					//the same response/modified/or a new one need to be returned.
-//					return response;
-//				},
-//				responseError: function (rejection) {
-
-//					if (rejection.status == "401") {
-//						$location.path('/login');
-//					}
-//					return $q.reject(rejection);
-//				}
-//			};
-//		});
-//	}
-//})();
 var app = angular.module("MyApp", ["ngResource", "ui.router"]);
 
 app.config(config);
@@ -69,6 +40,7 @@ function config($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('/login');
 }
 function configAuthentication($httpProvider) {
+// Hàm kiểm tra tất cả các request trả về 
 	$httpProvider.interceptors.push(function ($q, $location) {
 		debugger;
         return {

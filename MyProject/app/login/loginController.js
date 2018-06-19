@@ -1,24 +1,31 @@
-(function (app) {
+﻿(function (app) {
 
 	app.controller('loginController', ['$scope', '$injector', '$location','authService',
         function ($scope, $injector, $localtion,authService) {
         	debugger;
         	$scope.loginData = {
         		userName: "",
-        		password: ""
+        		password: "",
+				message:""
         	};
 
         	$scope.loginSubmit = function () {
-        		authService.userAuthentication($scope.loginData.userName, $scope.loginData.password).then(function (response) {
-        			if (response != null && response.data.error != undefined) {
-        			//	notificationService.displayError(response.data.error_description);
-        			}
-        			else {
-        				debugger;
-        				var stateService = $injector.get('$state');
-        				stateService.go('home');
-        			}
-        		});
+        		authService.userAuthentication($scope.loginData.userName, $scope.loginData.password).then(
+function success(response) {
+	// do successful stuff here  
+
+	localStorage.setItem('userToken', response.access_token);
+	var stateService = $injector.get('$state');
+	stateService.go('home');
+},
+    function err(response) {
+    	debugger;
+    	// response.data - find error message here
+    	// response.status - find error code here 
+    	// treat error here
+    	$scope.loginData.message = "Sai thông tin đăng nhập hoặc mật khẩu";
+    
+    });
         	}
         }]);
 })
