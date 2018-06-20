@@ -250,6 +250,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Admin\admin.module.js" />
+    <Content Include="app\Admin\adminList.html" />
+    <Content Include="app\Admin\adminListController.js" />
     <Content Include="app\appConfig.js" />
     <Content Include="app\common\authService.js" />
     <Content Include="app\Content\assets\chart-master\Chart.js" />
@@ -737,6 +740,7 @@
     <Content Include="app\Content\js\jquery.tagsinput.js" />
     <Content Include="app\Content\js\jquery.validate.min.js" />
     <Content Include="app\Content\js\lte-ie7.js" />
+    <Content Include="app\Content\js\main.js" />
     <Content Include="app\Content\js\moment.js" />
     <Content Include="app\Content\js\morris-script.js" />
     <Content Include="app\Content\js\morris.min.js" />
@@ -753,6 +757,7 @@
     <Content Include="app\Include\sidebar.html" />
     <Content Include="app\Include\headder.html" />
     <Content Include="app\index.html" />
+    <Content Include="app\shared\views\container.html" />
     <Content Include="app\login\loginController.js" />
     <Content Include="app\login\loginView.html" />
     <Content Include="app\Template\NiceAdmin\404.html" />
@@ -1457,6 +1462,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="app\Content\js\r.js" />
+    <Content Include="app\Content\js\require.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -1498,7 +1505,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\Admin\" />
     <Folder Include="app\Content\assets\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="app\Extension\factory\" />
     <Folder Include="app\Extension\provider\" />

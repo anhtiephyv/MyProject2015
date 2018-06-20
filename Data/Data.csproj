@@ -98,10 +98,15 @@
     <Compile Include="Migrations\201806151740436_them_cho_applicationrole.Designer.cs">
       <DependentUpon>201806151740436_them_cho_applicationrole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806200248126_AddCountry.cs" />
+    <Compile Include="Migrations\201806200248126_AddCountry.Designer.cs">
+      <DependentUpon>201806200248126_AddCountry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoriesRepository.cs" />
@@ -110,7 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806151725112_InitialCreate.resx">
@@ -118,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806151740436_them_cho_applicationrole.resx">
       <DependentUpon>201806151740436_them_cho_applicationrole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806200248126_AddCountry.resx">
+      <DependentUpon>201806200248126_AddCountry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

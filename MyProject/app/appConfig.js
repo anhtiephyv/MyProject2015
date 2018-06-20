@@ -23,7 +23,7 @@ function config($stateProvider, $urlRouterProvider) {
 	debugger;
 	$stateProvider.state('base', {
 		url: '',
-		templateUrl: '/app/index.html',
+		templateUrl: '/app/home/homeView.html',
 		abstract: true
 	})
            .state('login', {
@@ -34,7 +34,7 @@ function config($stateProvider, $urlRouterProvider) {
             .state('home', {
             	url: "/admin",
             	parent: 'base',
-            	templateUrl: "/app/home/homeView.html",
+            	templateUrl: "/app/Admin/adminList.html",
             	controller: "homeController"
             });
 		$urlRouterProvider.otherwise('/login');
