@@ -3,6 +3,8 @@
     app.controller('loginController', ['$scope', '$injector', '$location', 'authService',
     function ($scope, $injector, $localtion, authService) {
         debugger;
+        if (!localStorage.isAuth)
+        {
         $scope.loginData = {
             userName: "",
             password: "",
@@ -28,5 +30,12 @@ function err(response) {
 
 });
         }
-    }]);
+        }
+        else {
+            var stateService = $injector.get('$state');
+            stateService.go('home');
+        }
+    }
+
+    ]);
 });

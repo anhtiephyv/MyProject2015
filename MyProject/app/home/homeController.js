@@ -9,4 +9,4 @@
             }
         }]);
 })
-	(angular.module('MyApp'), []);
+	(angular.module('MyApp'));

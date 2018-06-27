@@ -11,9 +11,14 @@
         'restangular': 'restangular',
         'underscore': 'underscore',
         'app': '../../app',
+      //  'toastr': 'toastr',
         'authService': '../../common/authService',
-        'tokenAuth': '../../common/tokenAuth'
+        'authData': '../../common/authData',
 
+        'notificationService': '../../common/notificationService',
+        'apiService': '../../common/apiService',
+        'authenticationService': '../../common/authenticationService'
+     
     },
     // Đoạn này viết các thằng con phải phụ thuộc vào các js khác để có thể chạy được, đoạn này load trước 
     shim: {
@@ -30,12 +35,16 @@
             deps: ['angular', 'angular-ui-router']
         },
         "authService": ['app'],
-        "tokenAuth": ['app'],
+        "authData": ['app'],
+        "authenticationService":['app','authData'],
+        "apiService": ['app', 'notificationService', 'authenticationService'],
+        'notificationService':['app']
+
     },
     //
     //deps: ['../../app']
 });
-require(['app', 'authService', 'tokenAuth'], function (app, authService) {
+require(['app', 'authService', 'authData', 'apiService', 'notificationService','authenticationService'], function (app, authService, authData, apiService, notificationService,authenticationService) {
    // console.log('app.js, services.js and controllers.js files loaded');
 //    app.init();
 });

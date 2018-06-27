@@ -115,11 +115,11 @@
 //          views: {
 //              login:
 //                  angularAMD.route({
-                          
+
 //                      templateUrl: '/app/login/loginView.html',
 //                      controller: 'loginController',
 //                      controllerUrl: '/app/login/loginController.js',
-        
+
 //                  })
 //          }}
 //            )
@@ -128,7 +128,7 @@
 //                   view: {
 //                       admin:
 //                angularAMD.route({
-                   
+
 //                    parent: 'base',
 //                    templateUrl: "/app/Admin/adminList.html",
 //                    controller: "homeController"
@@ -149,36 +149,52 @@ define(['angularAMD', 'angular-ui-router'], function (angularAMD) {
       [
         '$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
-     
-            $stateProvider.state(
-              'base',
-              angularAMD.route({
-                  url: '',
-                  templateUrl: '/app/home/homeView.html',
-                  controller: 'homeController',
-                  controllerUrl: '/app/home/homeController.js',
-              }
-              )
-            ).state(
-              'login',
-              angularAMD.route({
-                  url: '/login',
-                  templateUrl: '/app/login/loginView.html',
-                  controller: 'loginController',
-                  controllerUrl: '/app/login/loginController.js',
-              }
-              )
-            ).state(
-              'home',
-              angularAMD.route({
-                  url: '/home',
-                  parent: 'base',
-                  templateUrl: '/app/admin/adminList.html',
-                  controller: 'adminListController',
-                  controllerUrl: '/app/admin/adminListController.js',
-              }
-              )
-            );
+
+            $stateProvider
+                .state('base', angularAMD.route({
+                    url: '',
+                    templateUrl: '/app/home/homeView.html',
+                    controller: 'homeController',
+                    controllerUrl: '/app/home/homeController.js',
+                    abstract: true
+                }))
+                .state('login', angularAMD.route({
+                    url: '/login',
+                    templateUrl: '/app/login/loginView.html',
+                    controller: 'loginController',
+                    controllerUrl: '/app/login/loginController.js',
+                }))
+                .state('home', angularAMD.route({
+                    url: '/home',
+                    parent: 'base',
+                    templateUrl: '/app/home/DashBoard.html',
+                    controller: 'homeController',
+                    controllerUrl: '/app/home/homeController.js',
+                }))
+                // Khai báo đường dẫn users
+                            .state('user_list', angularAMD.route({
+                                url: '/user_list',
+                                parent: 'base',
+                                templateUrl: '/app/user/userList.html',
+                                controller: 'userListController',
+                                controllerUrl: '/app/user/userListController.js',
+                            }))
+                            .state('user_create', angularAMD.route({
+                                url: '/user_create',
+                                parent: 'base',
+                                templateUrl: '/app/user/userCreate.html',
+                                controller: 'userCreateController',
+                                controllerUrl: '/app/user/userCreateController.js',
+                            }))
+                              .state('user_edit', angularAMD.route({
+                                  url: '/user_edit/:id',
+                                  parent: 'base',
+                                  templateUrl: '/app/user/userEdit.html',
+                                  controller: 'userEditController',
+                                  controllerUrl: '/app/user/userEditController.js',
+                              }))
+            ;
+
             $urlRouterProvider.otherwise("/login");
         }
       ]

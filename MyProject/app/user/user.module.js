@@ -1,6 +1,6 @@
 
 (function () {
-    angular.module('MyApp.admin').config(config);
+    angular.module('MyApp').config(config);
 
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 

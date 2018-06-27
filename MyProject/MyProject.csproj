@@ -250,11 +250,21 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\Admin\admin.module.js" />
-    <Content Include="app\Admin\adminList.html" />
-    <Content Include="app\Admin\adminListController.js" />
+    <Content Include="app\common\apiService.js" />
+    <Content Include="app\common\authenticationService.js" />
+    <Content Include="app\common\ngBootbox.js" />
+    <Content Include="app\common\notificationService.js" />
+    <Content Include="app\Content\js\bootbox.js" />
+    <Content Include="app\Content\js\bootbox.min.js" />
+    <Content Include="app\Content\js\toastr.js" />
+    <Content Include="app\Content\js\toastr.min.js" />
+    <None Include="app\Content\js\_references.js" />
+    <Content Include="app\home\DashBoard.html" />
+    <Content Include="app\user\user.module.js" />
+    <Content Include="app\user\userList.html" />
+    <Content Include="app\user\userListController.js" />
     <Content Include="app\app.js" />
-    <Content Include="app\common\tokenAuth.js" />
+    <Content Include="app\common\authData.js" />
     <Content Include="app\common\authService.js" />
     <Content Include="app\Content\assets\chart-master\Chart.js" />
     <Content Include="app\Content\assets\chart-master\Chart.min.js" />
@@ -2221,6 +2231,8 @@
     <Content Include="app\Template\sbadmin\widgets.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2236,6 +2248,8 @@
     <Content Include="app\Content\js\angular.min.js" />
     <Content Include="app\Content\js\angular-resource.js" />
     <Content Include="app\Content\js\angular-resource.min.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -2697,6 +2711,8 @@
     <Content Include="app\Template\sbadmin\assets\scss\_switches.scss" />
     <Content Include="app\Template\sbadmin\assets\scss\_widgets.scss" />
     <Content Include="app\Template\sbadmin\images\.gitignore" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2710,6 +2726,8 @@
     <Content Include="app\Content\js\require.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
