@@ -5,4 +5,4 @@
         // do something
         }]);
 })
-(angular.module('MyApp.Admin'), []);
+(angular.module('MyApp'), []);

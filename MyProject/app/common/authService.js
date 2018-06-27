@@ -1,5 +1,6 @@
-(function (app) {
-	'use strict';
+define(['app'], function (app) {
+    'use strict';
+    var app = angular.module('MyApp', []);
 	app.factory('authService', authService);
 	authService.$inject = ['$http'];
 
@@ -35,10 +36,13 @@
 		//    return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
 		//}
 
-	getUserClaims:	function getUserClaims() {
-			return this.http.get(this.rootUrl + '/api/GetUserClaims');
+			 getUserClaims:	function getUserClaims() {
+			     return this.http.get(this.rootUrl + '/api/GetUserClaims');
+			 },
+		    logout:function(){
+
 		}
 
 	}
 }
-})(angular.module('MyApp'));
+})
