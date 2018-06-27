@@ -88,6 +88,7 @@ function initializeJS() {
 
 }
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
+    debugger;
     initializeJS();
 });

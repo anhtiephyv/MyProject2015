@@ -13,8 +13,9 @@
             authService.userAuthentication($scope.loginData.userName, $scope.loginData.password).then(
 function success(response) {
     // do successful stuff here  
-
-    localStorage.setItem('userToken', response.access_token);
+    debugger;
+    localStorage.setItem('userToken', response.data.access_token);
+    localStorage.setItem('isAuth', true);
     var stateService = $injector.get('$state');
     stateService.go('home');
 },

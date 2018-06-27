@@ -2,7 +2,7 @@
 (function (app) {
     app.controller('homeController', ['$scope', '$injector', '$location',
         function ($scope, $injector, $location) {
-            if(1==1)
+            if (!localStorage.isAuth)
             {
                 var stateService = $injector.get('$state');
                 stateService.go('login');
