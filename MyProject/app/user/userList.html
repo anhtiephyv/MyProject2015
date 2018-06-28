@@ -20,10 +20,10 @@
             </tr>
             <tr ng-repeat="item in data">
                 <td><input type="checkbox" ng-model="item.checked" name="all" /></td>
-                <td>{{item.ID}}</td>
-                <td><a ui-sref="edit_application_group({id:item.ID})">{{item.Name}}</a></td>
+                <td>{{item.Id}}</td>
+                <td><a ui-sref="edit_application_group({id:item.ID})">{{item.UserName}}</a></td>
                 <td>
-                    {{item.Description}}
+                    {{item.FirstName}}
                 </td>
                 <td>
                     <button class="btn btn-sm btn-primary" ui-sref="edit_application_group({id:item.ID})"><i class="fa fa-pencil"></i></button>

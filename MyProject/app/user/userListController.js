@@ -1,6 +1,6 @@
 ﻿(function (app) {
     'use strict';
-  
+   
     app.controller('userListController',['$scope', 'apiService', 'notificationService', '$filter',
     function userListController($scope, apiService, notificationService, $filter) {
 
@@ -88,7 +88,7 @@
                 }
             }
 
-            apiService.get('api/applicationGroup/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
+            apiService.get('api/users/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
         }
 
         function dataLoadCompleted(result) {
@@ -113,5 +113,4 @@
 
         $scope.search();
     }]);
-})
-	(angular.module('MyApp'));
+})(angular.module('MyApp'));

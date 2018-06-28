@@ -12,17 +12,21 @@ namespace Data.Base
         // Get by expression
         IEnumerable<TEntity> Get(
            Expression<Func<TEntity, bool>> filter = null,
-           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+           string orderBy = null, string sortDir = null,
            string includeProperties = "");
         //Get by id
         TEntity GetByID(object id);
         //Create
-       void Create(TEntity entity);
+        void Create(TEntity entity);
         //Delete
-       void Delete(object id);
+        void Delete(object id);
         // Delete by entity
-       void Delete(TEntity entityToDelete);
+        void Delete(TEntity entityToDelete);
         //Update
         void Update(TEntity entityToUpdate);
+        IEnumerable<TEntity> GetPaging( int page = 0, int pageSize = 20,
+         Expression<Func<TEntity, bool>> filter = null,
+        string orderBy = null,string sortDir = null,
+         string includeProperties = "");
     }
 }

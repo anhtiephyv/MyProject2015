@@ -8,13 +8,13 @@ using Data.Models;
 using Data.Base;
 namespace Data.Repository
 {
-    public interface ICategoriesRepository : IGenericRepository<Category>
+    public interface IUsersRepository : IGenericRepository<ApplicationUser>
     {
 
     }
-    public class CategoriesRepository : GenericRepository<Category>, ICategoriesRepository
+    public class UsersRepository : GenericRepository<ApplicationUser>, IUsersRepository
     {
-        public CategoriesRepository(MyShopDBContext DBcontext)
+        public UsersRepository(MyShopDBContext DBcontext)
             : base(DBcontext)
         {
         }

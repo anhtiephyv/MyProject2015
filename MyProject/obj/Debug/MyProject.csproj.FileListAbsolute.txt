@@ -199,6 +199,7 @@ E:\Project\MyProject2015\MyProject\bin\Microsoft.Owin.Security.MicrosoftAccount.
 E:\Project\MyProject2015\MyProject\obj\Debug\MyProject.csprojResolveAssemblyReference.cache
 E:\Project\MyProject2015\MyProject\obj\Debug\MyProject.dll
 E:\Project\MyProject2015\MyProject\obj\Debug\MyProject.pdb
+D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\MyProject\bin\ApplicationInsights.config
 D:\MyProject\MyProject2015\MyProject\bin\roslyn\csc.exe
 D:\MyProject\MyProject2015\MyProject\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -219,6 +220,7 @@ D:\MyProject\MyProject2015\MyProject\bin\Antlr3.Runtime.dll
 D:\MyProject\MyProject2015\MyProject\bin\Autofac.dll
 D:\MyProject\MyProject2015\MyProject\bin\Autofac.Integration.Mvc.dll
 D:\MyProject\MyProject2015\MyProject\bin\Autofac.Integration.WebApi.dll
+D:\MyProject\MyProject2015\MyProject\bin\AutoMapper.dll
 D:\MyProject\MyProject2015\MyProject\bin\Data.dll
 D:\MyProject\MyProject2015\MyProject\bin\EntityFramework.dll
 D:\MyProject\MyProject2015\MyProject\bin\EntityFramework.SqlServer.dll
@@ -248,6 +250,7 @@ D:\MyProject\MyProject2015\MyProject\bin\Newtonsoft.Json.dll
 D:\MyProject\MyProject2015\MyProject\bin\Owin.dll
 D:\MyProject\MyProject2015\MyProject\bin\Services.dll
 D:\MyProject\MyProject2015\MyProject\bin\System.Net.Http.Formatting.dll
+D:\MyProject\MyProject2015\MyProject\bin\System.ValueTuple.dll
 D:\MyProject\MyProject2015\MyProject\bin\System.Web.Cors.dll
 D:\MyProject\MyProject2015\MyProject\bin\System.Web.Helpers.dll
 D:\MyProject\MyProject2015\MyProject\bin\System.Web.Http.dll
@@ -265,6 +268,8 @@ D:\MyProject\MyProject2015\MyProject\bin\Services.pdb
 D:\MyProject\MyProject2015\MyProject\bin\Autofac.xml
 D:\MyProject\MyProject2015\MyProject\bin\Autofac.Integration.Mvc.xml
 D:\MyProject\MyProject2015\MyProject\bin\Autofac.Integration.WebApi.xml
+D:\MyProject\MyProject2015\MyProject\bin\AutoMapper.pdb
+D:\MyProject\MyProject2015\MyProject\bin\AutoMapper.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.AI.DependencyCollector.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.AI.Web.xml
@@ -274,6 +279,7 @@ D:\MyProject\MyProject2015\MyProject\bin\Microsoft.CodeDom.Providers.DotNetCompi
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Cors.xml
 D:\MyProject\MyProject2015\MyProject\bin\System.Net.Http.Formatting.xml
+D:\MyProject\MyProject2015\MyProject\bin\System.ValueTuple.xml
 D:\MyProject\MyProject2015\MyProject\bin\System.Web.Http.xml
 D:\MyProject\MyProject2015\MyProject\bin\System.Web.Http.Owin.xml
 D:\MyProject\MyProject2015\MyProject\bin\System.Web.Http.WebHost.xml
@@ -299,6 +305,5 @@ D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.OAuth.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.Google.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.Twitter.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.dll
 D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.pdb

@@ -65,7 +65,6 @@ D:\MyProject\MyProject2015\Data\bin\Debug\Microsoft.Owin.Security.xml
 D:\MyProject\MyProject2015\Data\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 D:\MyProject\MyProject2015\Data\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\MyProject\MyProject2015\Data\bin\Debug\Newtonsoft.Json.xml
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.InitialCreate.resources
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.them_cho_applicationrole.resources
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.AddCountry.resources
