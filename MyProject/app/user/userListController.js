@@ -84,6 +84,8 @@
                 params: {
                     page: page,
                     pageSize: 10,
+                    orderby: "UserName",
+					sortDir: "asc",
                     filter: $scope.filterExpression
                 }
             }

@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Service.Service
 {
-    public interface ICategorySerivce
+    public interface ICategoryService
     {
 
         IEnumerable<Category> GetAll();
     }
-    public class CategorySerivce : ICategorySerivce
+    public class CategoryService : ICategoryService
     {
         private UnitOfWork unitOfWork = new UnitOfWork();
 
-        public CategorySerivce()
+        public CategoryService()
         {
         }
         public IEnumerable<Category> GetAll()

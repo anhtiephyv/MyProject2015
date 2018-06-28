@@ -13,13 +13,13 @@ using MyProject.Model;
 namespace MyProject.Api
 {
     [RoutePrefix("api/users")]
-    [Authorize]
+    //[Authorize]
     public class UsersController : BaseController
     {
-        private IApplicationUsersSerivce _usersService;
+        private IApplicationUsersService _usersService;
 
 
-        public UsersController(IApplicationUsersSerivce usersService)
+        public UsersController(IApplicationUsersService usersService)
         {
             _usersService = usersService;
         }

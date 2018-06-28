@@ -14,6 +14,7 @@
             del: del
         }
         function del(url, data, success, failure) {
+        	url = "../" + url;
             authenticationService.setHeader();
             $http.delete(url, data).then(function (result) {
                 success(result);
@@ -29,6 +30,7 @@
             });
         }
         function post(url, data, success, failure) {
+        	url = "../" + url;
             authenticationService.setHeader();
             $http.post(url, data).then(function (result) {
                 success(result);
@@ -44,6 +46,7 @@
             });
         }
         function put(url, data, success, failure) {
+        	url = "../" + url;
             authenticationService.setHeader();
             $http.put(url, data).then(function (result) {
                 success(result);
@@ -59,6 +62,8 @@
             });
         }
         function get(url, params, success, failure) {
+        	debugger;
+        	url = "../" + url;
             authenticationService.setHeader();
             $http.get(url, params).then(function (result) {
                 success(result);

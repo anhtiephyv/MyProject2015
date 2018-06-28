@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using Data.Repository;
 namespace Service.Service
 {
-    public interface IApplicationUsersSerivce
+    public interface IApplicationUsersService
     {
         IEnumerable<ApplicationUser> Get(
           Expression<Func<ApplicationUser, bool>> filter = null,
@@ -28,12 +28,12 @@ namespace Service.Service
            string includeProperties = "");
         void Save();
     }
-    public class ApplicationUsersSerivce : IApplicationUsersSerivce
+    public class ApplicationUsersService : IApplicationUsersService
     {
         private IUsersRepository _usersRepository;
         private IUnitOfWork _unitofWork;
 
-        public ApplicationUsersSerivce(IUsersRepository UsersRepository, IUnitOfWork unitofWork)
+        public ApplicationUsersService(IUsersRepository UsersRepository, IUnitOfWork unitofWork)
         {
             this._usersRepository = UsersRepository;
             this._unitofWork = unitofWork;
