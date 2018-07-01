@@ -199,7 +199,6 @@ E:\Project\MyProject2015\MyProject\bin\Microsoft.Owin.Security.MicrosoftAccount.
 E:\Project\MyProject2015\MyProject\obj\Debug\MyProject.csprojResolveAssemblyReference.cache
 E:\Project\MyProject2015\MyProject\obj\Debug\MyProject.dll
 E:\Project\MyProject2015\MyProject\obj\Debug\MyProject.pdb
-D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\MyProject\bin\ApplicationInsights.config
 D:\MyProject\MyProject2015\MyProject\bin\roslyn\csc.exe
 D:\MyProject\MyProject2015\MyProject\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -305,5 +304,6 @@ D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.OAuth.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.Google.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.Twitter.xml
 D:\MyProject\MyProject2015\MyProject\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.dll
 D:\MyProject\MyProject2015\MyProject\obj\Debug\MyProject.pdb

@@ -110,6 +110,7 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CountryRepository.cs" />
     <Compile Include="Repository\UsersRepository.cs" />
     <Compile Include="Repository\CategoriesRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />

@@ -10,18 +10,18 @@
 //    //    debugger;
 //    //    $stateProvider.state('base', {
 //    //        url: '',
-//    //        templateUrl: '/app/home/homeView.html',
+//    //        templateUrl: '/app/modules/home/homeView.html',
 //    //        abstract: true
 //    //    })
 //    //           .state('login', {
 //    //               url: "/login",
-//    //               templateUrl: "/app/login/loginView.html",
+//    //               templateUrl: "/app/modules/login/loginView.html",
 //    //               controller: "loginController"
 //    //           })
 //    //            .state('home', {
 //    //                url: "/admin",
 //    //                parent: 'base',
-//    //                templateUrl: "/app/Admin/adminList.html",
+//    //                templateUrl: "/app/modules/Admin/adminList.html",
 //    //                controller: "homeController"
 //    //            });
 //    //    $urlRouterProvider.otherwise('/login');
@@ -31,20 +31,20 @@
 //    app.config(['$routeProvider',function ($routeProvider) {
 //        $routeProvider
 //        .when('', angularAMD.route({
-//            templateUrl: '/app/home/homeView.html',
+//            templateUrl: '/app/modules/home/homeView.html',
 //            controller: 'homeController',
-//            controllerUrl: '/app/home/homeController.js',
+//            controllerUrl: '/app/modules/home/homeController.js',
 //            abstract: true
 //        }))
 //        .when("/login", angularAMD.route({
-//                           templateUrl: "/app/login/loginView.html",
+//                           templateUrl: "/app/modules/login/loginView.html",
 //            controller: 'loginController',
-//            controllerUrl: '/app/login/loginController.js'
+//            controllerUrl: '/app/modules/login/loginController.js'
 //        }))
 //                    .when("/home", angularAMD.route({
-//                        templateUrl: "/app/home/homeView.html",
+//                        templateUrl: "/app/modules/home/homeView.html",
 //                        controller: 'homeController',
-//                        controllerUrl: '/app/home/homeController.js'
+//                        controllerUrl: '/app/modules/home/homeController.js'
 //                    }))
 //        .otherwise({ redirectTo: "/login" });
 //    }]);
@@ -102,9 +102,9 @@
 //                    home:
 //                angularAMD.route({
 //                    url: '',
-//                    templateUrl: '/app/home/homeView.html',
+//                    templateUrl: '/app/modules/home/homeView.html',
 //                    controller: 'homeController',
-//                    controllerUrl: '/app/home/homeController.js',
+//                    controllerUrl: '/app/modules/home/homeController.js',
 //                    abstract: true
 //                })
 //                }
@@ -116,9 +116,9 @@
 //              login:
 //                  angularAMD.route({
 
-//                      templateUrl: '/app/login/loginView.html',
+//                      templateUrl: '/app/modules/login/loginView.html',
 //                      controller: 'loginController',
-//                      controllerUrl: '/app/login/loginController.js',
+//                      controllerUrl: '/app/modules/login/loginController.js',
 
 //                  })
 //          }}
@@ -130,7 +130,7 @@
 //                angularAMD.route({
 
 //                    parent: 'base',
-//                    templateUrl: "/app/Admin/adminList.html",
+//                    templateUrl: "/app/modules/Admin/adminList.html",
 //                    controller: "homeController"
 //                })
 //                   }}
@@ -153,48 +153,70 @@ define(['angularAMD', 'angular-ui-router'], function (angularAMD) {
             $stateProvider
                 .state('base', angularAMD.route({
                     url: '',
-                    templateUrl: '/app/home/homeView.html',
+                    templateUrl: '/app/modules/home/homeView.html',
                     controller: 'homeController',
-                    controllerUrl: '/app/home/homeController.js',
+                    controllerUrl: '/app/modules/home/homeController.js',
                     abstract: true
                 }))
                 .state('login', angularAMD.route({
                     url: '/login',
-                    templateUrl: '/app/login/loginView.html',
+                    templateUrl: '/app/modules/login/loginView.html',
                     controller: 'loginController',
-                    controllerUrl: '/app/login/loginController.js',
+                    controllerUrl: '/app/modules/login/loginController.js',
                 }))
                 .state('home', angularAMD.route({
                     url: '/home',
                     parent: 'base',
-                    templateUrl: '/app/home/DashBoard.html',
+                    templateUrl: '/app/modules/home/DashBoard.html',
                     controller: 'homeController',
-                    controllerUrl: '/app/home/homeController.js',
+                    controllerUrl: '/app/modules/home/homeController.js',
                 }))
                 // Khai báo đường dẫn users
                             .state('user_list', angularAMD.route({
                                 url: '/user_list',
                                 parent: 'base',
-                                templateUrl: '/app/user/userList.html',
+                                templateUrl: '/app/modules/user/userList.html',
                                 controller: 'userListController',
-                                controllerUrl: '/app/user/userListController.js',
+                                controllerUrl: '/app/modules/user/userListController.js',
                             }))
                             .state('user_create', angularAMD.route({
                                 url: '/user_create',
                                 parent: 'base',
-                                templateUrl: '/app/user/userCreate.html',
+                                templateUrl: '/app/modules/user/userCreate.html',
                                 controller: 'userCreateController',
-                                controllerUrl: '/app/user/userCreateController.js',
+                                controllerUrl: '/app/modules/user/userCreateController.js',
                             }))
                               .state('user_edit', angularAMD.route({
                                   url: '/user_edit/:id',
                                   parent: 'base',
-                                  templateUrl: '/app/user/userEdit.html',
+                                  templateUrl: '/app/modules/user/userEdit.html',
                                   controller: 'userEditController',
-                                  controllerUrl: '/app/user/userEditController.js',
+                                  controllerUrl: '/app/modules/user/userEditController.js',
+                              }))
+            // Khai báo đường dẫn countrys
+                .state('country_list', angularAMD.route({
+                    url: '/country_list',
+                    parent: 'base',
+                    templateUrl: '/app/modules/country/countryList.html',
+                    controller: 'countryListController',
+                    controllerUrl: '/app/modules/country/countryListController.js',
+                }))
+                            .state('country_create', angularAMD.route({
+                                url: '/country_create',
+                                parent: 'base',
+                                templateUrl: '/app/modules/country/countryCreate.html',
+                                controller: 'countryCreateController',
+                                controllerUrl: '/app/modules/country/countryCreateController.js',
+                            }))
+                              .state('country_edit', angularAMD.route({
+                                  url: '/country_edit/:id',
+                                  parent: 'base',
+                                  templateUrl: '/app/modules/country/countryEdit.html',
+                                  controller: 'countryEditController',
+                                  controllerUrl: '/app/modules/country/countryEditController.js',
                               }))
             ;
-
+            
             $urlRouterProvider.otherwise("/login");
         }
       ]

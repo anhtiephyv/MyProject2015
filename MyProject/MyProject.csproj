@@ -238,7 +238,8 @@
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\ApplicationOAuthProviderController.cs" />
-    <Compile Include="Api\UsersController.cs" />
+    <Compile Include="Api\CountryController.cs" />
+    <Compile Include="Api\ApplicationUserController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -254,9 +255,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="helper\helpler.cs" />
+    <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Model\CountryModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\AccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -272,10 +275,14 @@
     <Content Include="app\Content\js\toastr.js" />
     <Content Include="app\Content\js\toastr.min.js" />
     <None Include="app\Content\js\_references.js" />
-    <Content Include="app\home\DashBoard.html" />
-    <Content Include="app\user\user.module.js" />
-    <Content Include="app\user\userList.html" />
-    <Content Include="app\user\userListController.js" />
+    <Content Include="app\directives\pagerDirective.js" />
+    <Content Include="app\directives\pagerDirective.html" />
+    <Content Include="app\modules\home\DashBoard.html" />
+    <Content Include="app\modules\country\countryList.html" />
+    <Content Include="app\modules\country\countryListController.js" />
+    <Content Include="app\modules\user\user.module.js" />
+    <Content Include="app\modules\user\userList.html" />
+    <Content Include="app\modules\user\userListController.js" />
     <Content Include="app\app.js" />
     <Content Include="app\common\authData.js" />
     <Content Include="app\common\authService.js" />
@@ -785,10 +792,10 @@
     <Content Include="app\Body.html" />
     <Content Include="app\controllers.js" />
     <Content Include="app\hearder.html" />
-    <Content Include="app\home\homeView.html" />
-    <Content Include="app\home\homeController.js" />
-    <Content Include="app\Include\sidebar.html" />
-    <Content Include="app\Include\headder.html" />
+    <Content Include="app\modules\home\homeView.html" />
+    <Content Include="app\modules\home\homeController.js" />
+    <Content Include="app\modules\Include\sidebar.html" />
+    <Content Include="app\modules\Include\headder.html" />
     <Content Include="app\index.html" />
     <Content Include="app\main.js" />
     <Content Include="app\Project\angular-route.js" />
@@ -823,8 +830,8 @@
     <Content Include="app\requirejs\style.css" />
     <Content Include="app\requirejs\timeService.js" />
     <Content Include="app\shared\views\container.html" />
-    <Content Include="app\login\loginController.js" />
-    <Content Include="app\login\loginView.html" />
+    <Content Include="app\modules\login\loginController.js" />
+    <Content Include="app\modules\login\loginView.html" />
     <Content Include="app\Template\NiceAdmin\404.html" />
     <Content Include="app\Template\NiceAdmin\assets\chart-master\Chart.js" />
     <Content Include="app\Template\NiceAdmin\assets\chart-master\Chart.min.js" />

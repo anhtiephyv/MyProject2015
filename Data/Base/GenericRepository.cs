@@ -89,7 +89,7 @@ The code in the Get method creates an IQueryable object and then applies the fil
         //    return _resetSet.AsQueryable();
         //}
         // Xem của Tiệp thần côn viết đây
-        public virtual IEnumerable<TEntity> GetPaging( int page = 0, int pageSize = 20,
+        public virtual IEnumerable<TEntity> GetPaging(int page = 0, int pageSize = 20,
     Expression<Func<TEntity, bool>> filter = null,
    string orderBy = null,
             string sortDir = null,
@@ -101,10 +101,13 @@ The code in the Get method creates an IQueryable object and then applies the fil
             {
                 query = query.Where(filter);
             }
-            foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            if (string.IsNullOrEmpty(includeProperties))
             {
-                query = query.Include(includeProperty);
+                foreach (var includeProperty in includeProperties.Split
+                    (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
             }
             if (orderBy != null)
             {
@@ -112,7 +115,7 @@ The code in the Get method creates an IQueryable object and then applies the fil
             }
             int skipCount = page * pageSize;
             query = query.Skip(skipCount).Take(pageSize);
-           // totalRow = query.ToList().Count;
+            // totalRow = query.ToList().Count;
             return query.ToList();
         }
         // Get By ID

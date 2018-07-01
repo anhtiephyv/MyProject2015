@@ -30,14 +30,16 @@ namespace MyProject.Api
             var user = await manger.FindAsync(context.UserName, context.Password);
             if (user != null)
             {
+
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             //    identity.AddClaim(new Claim("UserName", user.UserName));
                 identity.AddClaim(new Claim("FirstName", user.FirstName));
                 identity.AddClaim(new Claim("LastName", user.LastName));
                 identity.AddClaim(new Claim("Email", user.Email));
                 identity.AddClaim(new Claim("LoggedOn", DateTime.Now.ToString()));
-                context.Validated(identity);
                 identity.AddClaim(new Claim("UserName", user.UserName));
+                context.Validated(identity);
+              
             }
             else
             {

@@ -37,6 +37,7 @@
             }, function (error) {
                 console.log(error.status)
                 if (error.status === 401) {
+                    debugger;
                     notificationService.displayError('Authenticate is required.');
                 }
                 else if (failure != null) {
@@ -68,7 +69,13 @@
             $http.get(url, params).then(function (result) {
                 success(result);
             }, function (error) {
-                failure(error);
+                if (error.status === 401) {
+                    debugger;
+                    notificationService.displayError('Authenticate is required.');
+                }
+                else if (failure != null) {
+                    failure(error);
+                }
             });
         }
     }

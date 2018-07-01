@@ -18,6 +18,7 @@ using System.Security.Claims;
 
 using Microsoft.Owin.Security;
 using MyProject.Api;
+using Data.Models;
 
 namespace MyProject
 {
@@ -44,7 +45,7 @@ namespace MyProject
                     // This is a security feature which is used when you change a password or add an external login to your account.  
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
-                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager, DefaultAuthenticationTypes.ApplicationCookie))
                 }
             });            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -82,7 +83,10 @@ namespace MyProject
                 Provider = new ApplicationOAuthProviderController(),
                 AuthorizeEndpointPath = new PathString("/api/Account/Login"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+            AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+            AuthenticationMode = AuthenticationMode.Active,
                 AllowInsecureHttp = true
+               
             };
             app.UseOAuthAuthorizationServer(options);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());

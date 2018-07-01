@@ -1,7 +1,7 @@
 ﻿(function (app) {
     'use strict';
    
-    app.controller('userListController',['$scope', 'apiService', 'notificationService', '$filter',
+    app.controller('countryListController',['$scope', 'apiService', 'notificationService', '$filter',
     function userListController($scope, apiService, notificationService, $filter) {
 
         debugger;
@@ -84,13 +84,13 @@
                 params: {
                     page: page,
                     pageSize: 10,
-                    orderby: "UserName",
+                    orderby: "Id",
 					sortDir: "asc",
                     filter: $scope.filterExpression
                 }
             }
 
-            apiService.get('api/users/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
+            apiService.get('api/Country/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
         }
 
         function dataLoadCompleted(result) {

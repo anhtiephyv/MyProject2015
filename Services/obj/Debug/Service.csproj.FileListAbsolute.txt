@@ -20,7 +20,6 @@ E:\Project\MyProject2015\Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 E:\Project\MyProject2015\Services\obj\Debug\Service.csprojResolveAssemblyReference.cache
 E:\Project\MyProject2015\Services\obj\Debug\Services.dll
 E:\Project\MyProject2015\Services\obj\Debug\Services.pdb
-D:\MyProject\MyProject2015\Services\obj\Debug\Service.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\Services\bin\Debug\Services.dll
 D:\MyProject\MyProject2015\Services\bin\Debug\Services.pdb
 D:\MyProject\MyProject2015\Services\bin\Debug\Data.dll
@@ -31,5 +30,6 @@ D:\MyProject\MyProject2015\Services\bin\Debug\Data.pdb
 D:\MyProject\MyProject2015\Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 D:\MyProject\MyProject2015\Services\bin\Debug\EntityFramework.xml
 D:\MyProject\MyProject2015\Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\MyProject\MyProject2015\Services\obj\Debug\Service.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\Services\obj\Debug\Services.dll
 D:\MyProject\MyProject2015\Services\obj\Debug\Services.pdb

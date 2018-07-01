@@ -10,19 +10,25 @@ using AutoMapper;
 using Data.Models;
 using MyProject.helper;
 using MyProject.Model;
+using MyProject.Mapping;
+using AutoMapper.QueryableExtensions;
 namespace MyProject.Api
 {
-    [RoutePrefix("api/users")]
-    //[Authorize]
-    public class UsersController : BaseController
+    [RoutePrefix("api/ApplicationUser")]
+    [AllowAnonymous]
+    public class ApplicationUserController : BaseController
     {
-        private IApplicationUsersService _usersService;
+        //private IAppUsersService _usersService;
+        private ApplicationUserManager _userManager;
 
-
-        public UsersController(IApplicationUsersService usersService)
+        public ApplicationUserController(ApplicationUserManager userManager)
         {
-            _usersService = usersService;
+            _userManager = userManager;
         }
+        //public ApplicationUserController()
+        //{
+           
+        //}
         [Route("getlistpaging")]
         [HttpGet]
         public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string orderby, string sortDir, string filter = null)
@@ -33,13 +39,13 @@ namespace MyProject.Api
                 HttpResponseMessage response = null;
                 int totalRow = 0;
 
-                var model = _usersService.GetPaging(out totalRow, page, pageSize, null, orderby, sortDir, null);
-                IEnumerable<UserModel> modelVm = Mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserModel>>(model);
+                var model = _userManager.Users;
+                  IEnumerable<UserModel> modelVm = Mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserModel>>(model);
 
-                PaginationSet<UserModel> pagedSet = new PaginationSet<UserModel>()
+                  PaginationSet<UserModel> pagedSet = new PaginationSet<UserModel>()
                 {
                     Page = page,
-                    TotalCount = totalRow,
+                    TotalCount = model.Count(),
                     TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize),
                     Items = modelVm
                 };

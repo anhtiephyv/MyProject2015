@@ -17,7 +17,8 @@
 
         'notificationService': '../../common/notificationService',
         'apiService': '../../common/apiService',
-        'authenticationService': '../../common/authenticationService'
+        'authenticationService': '../../common/authenticationService',
+        'pagerDirective': '../../directives/pagerDirective'
      
     },
     // Đoạn này viết các thằng con phải phụ thuộc vào các js khác để có thể chạy được, đoạn này load trước 
@@ -38,13 +39,14 @@
         "authData": ['app'],
         "authenticationService":['app','authData'],
         "apiService": ['app', 'notificationService', 'authenticationService'],
-        'notificationService':['app']
+        'notificationService': ['app'],
+        'pagerDirective':['app']
 
     },
     //
     //deps: ['../../app']
 });
-require(['app', 'authService', 'authData', 'apiService', 'notificationService','authenticationService'], function (app, authService, authData, apiService, notificationService,authenticationService) {
+require(['app', 'authService', 'authData', 'apiService', 'notificationService','authenticationService','pagerDirective'], function (app, authService, authData, apiService, notificationService,authenticationService,pagerDirective) {
    // console.log('app.js, services.js and controllers.js files loaded');
 //    app.init();
 });
