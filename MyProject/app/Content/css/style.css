@@ -1,4 +1,4 @@
-/*
+﻿/*
     Theme Name: NiceAdmin
     Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
     Author: BootstrapMade
@@ -9902,4 +9902,9 @@ span.customSelect.changed {
 
 #sendmessage.show, #errormessage.show, .show {
 	display:block;
+}
+/*Tiệp thần côn thêm css*/
+.padding-button{
+        padding-top: 2%;
+    padding-bottom: 1%;
 }

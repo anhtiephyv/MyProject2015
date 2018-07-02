@@ -11,6 +11,7 @@ using Data.Models;
 using MyProject.helper;
 using MyProject.Model;
 using MyProject.Mapping;
+using Data.Repository;
 using AutoMapper.QueryableExtensions;
 namespace MyProject.Api
 {
@@ -20,10 +21,11 @@ namespace MyProject.Api
     {
         //private IAppUsersService _usersService;
         private ICountryService _Country;
-
-        public CountryController(CountryService CountryService)
+        private ICountryRepository _CountryRepository;
+        public CountryController(ICountryService CountryService, ICountryRepository CountryRepository)
         {
             _Country = CountryService;
+            _CountryRepository = CountryRepository;
         }
         //public ApplicationUserController()
         //{
@@ -36,16 +38,18 @@ namespace MyProject.Api
 
             return CreateHttpResponse(request, () =>
             {
+          //      Func<Country, Object> orderByFunc = null;
                 HttpResponseMessage response = null;
+                 //t int totalRow;
                 int totalRow = 0;
-
-                var model = _Country.GetPaging( page, pageSize, null, orderby, sortDir,filter);
+         //       var Orderprop = helpler.GetPropertyValue(typeof(Country), orderby);
+                var model = _Country.GetMultiPaging(x => x.CountryName != null, out totalRow, orderby, sortDir, page, pageSize, null );
                 IEnumerable<CountryModel> modelVm = Mapper.Map<IEnumerable<Country>, IEnumerable<CountryModel>>(model);
 
                 PaginationSet<CountryModel> pagedSet = new PaginationSet<CountryModel>()
               {
                   Page = page,
-                  TotalCount = model.Count(),
+                  TotalCount = totalRow,
                   TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize),
                   Items = modelVm
               };

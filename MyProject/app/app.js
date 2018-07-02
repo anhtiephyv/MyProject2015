@@ -142,8 +142,8 @@
 //    angularAMD.bootstrap(app);
 //    return app;
 //});
-define(['angularAMD', 'angular-ui-router'], function (angularAMD) {
-    var app = angular.module('MyApp', ['ui.router'])
+define(['angularAMD', 'angular-ui-router', 'bootstrapUi'], function (angularAMD) {
+    var app = angular.module('MyApp', ['ui.router', 'ui.bootstrap'])
     .config
     (
       [

@@ -101,7 +101,7 @@ The code in the Get method creates an IQueryable object and then applies the fil
             {
                 query = query.Where(filter);
             }
-            if (string.IsNullOrEmpty(includeProperties))
+            if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProperty in includeProperties.Split
                     (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
@@ -111,12 +111,13 @@ The code in the Get method creates an IQueryable object and then applies the fil
             }
             if (orderBy != null)
             {
-                query = query.OrderByName(orderBy, sortDir);
+                //   query = query.OrderByName(orderBy, sortDir).AsQueryable();
             }
             int skipCount = page * pageSize;
-            query = query.Skip(skipCount).Take(pageSize);
-            // totalRow = query.ToList().Count;
-            return query.ToList();
+            //   qu
+            //  query = query.AsQueryable().Skip(skipCount).Take(pageSize);
+
+            return query.AsQueryable();
         }
         // Get By ID
         public virtual TEntity GetByID(object id)
@@ -148,6 +149,33 @@ The code in the Get method creates an IQueryable object and then applies the fil
         {
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
+        }
+
+        public virtual IEnumerable<TEntity> GetMultiPaging(Expression<Func<TEntity, bool>> predicate, out int total, string orderBy = null,
+            string sortDir = null, int index = 0, int size = 20, string[] includes = null)
+        {
+            int skipCount = index * size;
+            IQueryable<TEntity> _resetSet;
+
+            //HANDLE INCLUDES FOR ASSOCIATED OBJECTS IF APPLICABLE
+            if (includes != null && includes.Count() > 0)
+            {
+                var query = dbSet.Include(includes.First());
+                foreach (var include in includes.Skip(1))
+                    query = query.Include(include);
+                _resetSet = predicate != null ? query.Where<TEntity>(predicate).AsQueryable() : query.AsQueryable();
+            }
+            else
+            {
+                _resetSet = predicate != null ? dbSet.Where<TEntity>(predicate).AsQueryable() : dbSet.AsQueryable();
+            }
+            //if (orderBy != null)
+            //{
+            //    _resetSet = _resetSet.OrderByName(orderBy,sortDir).AsQueryable();
+            //}
+            _resetSet = skipCount == 0 ? _resetSet.Take(size) : _resetSet.Skip(skipCount).Take(size);
+            total = _resetSet.Count();
+            return _resetSet.AsQueryable();
         }
     }
 }

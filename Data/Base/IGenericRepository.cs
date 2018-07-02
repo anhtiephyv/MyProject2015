@@ -28,5 +28,7 @@ namespace Data.Base
          Expression<Func<TEntity, bool>> filter = null,
         string orderBy = null,string sortDir = null,
          string includeProperties = "");
+        IEnumerable<TEntity> GetMultiPaging(Expression<Func<TEntity, bool>> predicate, out int total, string orderBy = null,
+            string sortDir = null, int index = 0, int size = 20, string[] includes = null);
     }
 }

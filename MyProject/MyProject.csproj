@@ -266,10 +266,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\common\dialogs.min.js" />
     <Content Include="app\common\apiService.js" />
     <Content Include="app\common\authenticationService.js" />
     <Content Include="app\common\ngBootbox.js" />
     <Content Include="app\common\notificationService.js" />
+    <Content Include="app\Content\js\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="app\Content\js\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="app\Content\js\angular-ui\ui-bootstrap.js" />
+    <Content Include="app\Content\js\angular-ui\ui-bootstrap.min.js" />
     <Content Include="app\Content\js\bootbox.js" />
     <Content Include="app\Content\js\bootbox.min.js" />
     <Content Include="app\Content\js\toastr.js" />
@@ -277,6 +282,8 @@
     <None Include="app\Content\js\_references.js" />
     <Content Include="app\directives\pagerDirective.js" />
     <Content Include="app\directives\pagerDirective.html" />
+    <Content Include="app\modules\country\countryCreate.html" />
+    <Content Include="app\modules\country\countryCreateController.js" />
     <Content Include="app\modules\home\DashBoard.html" />
     <Content Include="app\modules\country\countryList.html" />
     <Content Include="app\modules\country\countryListController.js" />
@@ -2253,6 +2260,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2268,6 +2276,10 @@
     <Content Include="app\Content\js\angular.min.js" />
     <Content Include="app\Content\js\angular-resource.js" />
     <Content Include="app\Content\js\angular-resource.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />

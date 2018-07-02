@@ -1,15 +1,34 @@
 ﻿<div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header"><i class="fa fa-users"></i> Người dùng</h3>
+        <h3 class="page-header"><i class="fa fa-globe"></i> Quốc gia</h3>
         <ol class="breadcrumb">
             <li><i class="fa fa-home"></i><a href="#!/home">Trang chủ</a></li>
-            <li><i class="fa fa-user"></i>Người dùng</li>
-            <li><i class="fa fa-th-list"></i>Danh sách người dùng</li>
+            <li><i class="fa fa-globe"></i>Quốc gia</li>
+            <li><i class="fa fa-th-list"></i>Danh sách quốc gia</li>
         </ol>
     </div>
 </div>
 <div class="row">
+   
+
+    <div class="col-lg-4">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="keyword" placeholder="Từ khóa">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="search()">Tìm kiếm</button>
+            </span>
+        </div><!-- /input-group -->
+    </div>
+  
+</div>
+
+<div class="row">
+   
     <div class="col-md-12">
+        <div class="padding-button">
+            <button class="btn btn-success" ui-sref="add_application_group">Thêm mới</button>
+            <button class="btn btn-success" ng-click="create()">Thêm mới</button>
+        </div>
         <table class="table table-bordered">
             <tr>
                 <td style="width: 5%"><input name="all" type="checkbox" ng-click="selectAll()" /></td>
@@ -22,18 +41,19 @@
             </tr>
             <tr ng-repeat="item in data">
                 <td><input type="checkbox" ng-model="item.checked" name="all" /></td>
-                <td>{{item.Id}}</td>
+                <td>{{item.CountryID}}</td>
                 <td><a ui-sref="edit_application_group({id:item.ID})">{{item.CountryName}}</a></td>
-                <td>{{item.CountryFlag}}</td>
+              
                 <td>
                     {{item.CountryCronyms}}
                 </td>
+                <td>{{item.CountryFlag}}</td>
                 <td>
                     {{item.Country}}
                 </td>
                 <td>
                     <button class="btn btn-sm btn-primary" ui-sref="edit_application_group({id:item.ID})"><i class="fa fa-pencil"></i></button>
-                    <button class="btn  btn-sm btn-danger" ng-click="deleteItem(item.ID)"><i class="fa fa-trash"></i></button>
+                    <button class="btn  btn-sm btn-danger" ng-click="deleteItem(item.ID)"><i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>
         
@@ -46,5 +66,9 @@
         <div class="box-footer">
             <pager-directive page="{{page}}" custom-path="{{customPath}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="getProductCagories(page)"></pager-directive>
         </div>
+        <div>
+            <button class="btn btn-danger" ng-click="deleteMultiple()" id="btnDelete" disabled>Xóa nhiều</button>
+        </div>
+     
     </div>
 </div>

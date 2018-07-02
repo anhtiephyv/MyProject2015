@@ -1,8 +1,8 @@
 ﻿(function (app) {
     'use strict';
-    debugger;
-    app.controller('countryListController', ['$scope', 'apiService', 'notificationService', '$filter', '$modal',
-    function userListController($scope, apiService, notificationService, $filter,$modal) {
+   
+    app.controller('countryCreateController',['$scope', 'apiService', 'notificationService', '$filter','$dialogs',
+    function userListController($scope, apiService, notificationService, $filter,$dialogs) {
 
         debugger;
         $scope.loading = true;
@@ -13,7 +13,7 @@
         $scope.clearSearch = clearSearch;
         $scope.deleteItem = deleteItem;
         $scope.selectAll = selectAll;
-        $scope.create = create;
+
         $scope.deleteMultiple = deleteMultiple;
 
         function deleteMultiple() {
@@ -116,20 +116,12 @@
 
         $scope.search();
         function create(){
-
-            $modal.open({
-                templateUrl: '/app/modules/country/countryCreate.html', // loads the template
-                backdrop: true, // setting backdrop allows us to close the modal window on clicking outside the modal window
-                windowClass: 'modal', // windowClass - additional CSS class(es) to be added to a modal window template
-                controller: function ($scope, $modalInstance, $log) {
-         
-                },
-                resolve: {
-                    user: function () {
-                        return $scope.user;
-                    }
-                }
-            });//end of modal.open
+            dlg = $dialogs.create('/app/modules/country/countryCreate.html', 'countryCreateController', {}, { key: false, back: 'static' });
+            dlg.result.then(function(name){
+                $scope.name = name;
+            },function(){
+                $scope.name = 'You decided not to enter in your name, that makes me sad.';
+            });
         };
     
     }]);

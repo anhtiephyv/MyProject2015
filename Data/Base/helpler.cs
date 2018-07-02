@@ -39,5 +39,10 @@ namespace Data.Base
             }
             return source.OrderBy(GetExpression<TSource>(propertyName));
         }
+        public static object GetPropertyValue(object obj, string property)
+        {
+            System.Reflection.PropertyInfo propertyInfo = obj.GetType().GetProperty(property);
+            return propertyInfo.GetValue(obj, null);
+        }
     }
 }

@@ -26,6 +26,8 @@ namespace Service.Service
            string orderBy = null,
           string sortDir = null,
            string includeProperties = "");
+        IEnumerable<Country> GetMultiPaging(Expression<Func<Country, bool>> predicate, out int total, string orderBy = null,
+            string sortDir = null, int index = 0, int size = 20, string[] includes = null);
         void Save();
     }
     public class CountryService : ICountryService
@@ -79,7 +81,12 @@ namespace Service.Service
        //     totalRow = result.ToList().Count;
             return result;
         }
-
+        public IEnumerable<Country> GetMultiPaging(Expression<Func<Country, bool>> predicate, out int total, string orderBy = null,
+            string sortDir = null, int index = 0, int size = 20, string[] includes = null)
+        {
+            IEnumerable<Country> result = _CountryRepository.GetMultiPaging(predicate, out total, orderBy, sortDir, index, size, includes);
+            return result;
+        }
         public void Save()
         {
             _unitofWork.Save();
