@@ -11,9 +11,9 @@
         'restangular': 'restangular',
         'underscore': 'underscore',
         'app': '../../app',
-        'bootstrapUi': 'http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0',
-      //  'angular-ui-bootstrap': 'angular-ui/ui-bootstrap',
-      //  'toastr': 'toastr',
+        'bootstrapUi': 'angular-ui/ui-bootstrap-custom-tpls-0.12.1',
+        //  'angular-ui-bootstrap': 'angular-ui/ui-bootstrap',
+        //  'toastr': 'toastr',
         'authService': '../../common/authService',
         'authData': '../../common/authData',
 
@@ -21,7 +21,7 @@
         'apiService': '../../common/apiService',
         'authenticationService': '../../common/authenticationService',
         'pagerDirective': '../../directives/pagerDirective',
-       // 'dialogs': '../../common/dialogs.min',
+        // 'dialogs': '../../common/dialogs.min',
      
     },
     // Đoạn này viết các thằng con phải phụ thuộc vào các js khác để có thể chạy được, đoạn này load trước 
@@ -36,7 +36,7 @@
             deps: ["angular"],
             exports: "bootstrapUi"
         },
-      //  'angular-ui-bootstrap': { deps: ['angular'] },
+        //  'angular-ui-bootstrap': { deps: ['angular'] },
         'ngload': ['angularAMD'],
         'restangular': ['angular', 'underscore'],
 
@@ -46,7 +46,7 @@
         "authService": ['app'],
         "authData": ['app'],
         "authenticationService":['app','authData'],
-        "apiService": ['app', 'notificationService', 'authenticationService'],
+        "apiService": { deps: ['app', 'notificationService', 'authenticationService'] },
         'notificationService': ['app'],
         'pagerDirective': ['app'],
        // 'dialogs': ['bootstrapUi','angular-ui-bootstrap','app']

@@ -7,7 +7,7 @@
 
         this.setTokenInfo = function (data) {
             tokenInfo = data;
-            localStorage.set("TokenInfo", JSON.stringify(tokenInfo));
+            localStorage.setItem("TokenInfo", JSON.stringify(tokenInfo));
         }
 
         this.getTokenInfo = function () {
@@ -16,7 +16,7 @@
 
         this.removeToken = function () {
             tokenInfo = null;
-            localStorage.set("TokenInfo", null);
+            localStorage.setItem("TokenInfo", null);
         }
 
         this.init = function () {

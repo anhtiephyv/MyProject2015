@@ -15,7 +15,7 @@ using AutoMapper.QueryableExtensions;
 namespace MyProject.Api
 {
     [RoutePrefix("api/ApplicationUser")]
-    [AllowAnonymous]
+    [Authorize]
     public class ApplicationUserController : BaseController
     {
         //private IAppUsersService _usersService;

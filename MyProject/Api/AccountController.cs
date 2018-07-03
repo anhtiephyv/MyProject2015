@@ -18,7 +18,7 @@ using System.Text;
 
 namespace MyProject.Api
 {
-   // [RoutePrefix("api/account")]
+    [RoutePrefix("api/account")]
     public class AccountController : BaseController
     {
 
@@ -61,7 +61,7 @@ namespace MyProject.Api
         }
         [HttpPost]
         [AllowAnonymous]
-        [Route("login")]
+        [Route("Login")]
         public async Task<HttpResponseMessage> Login(HttpRequestMessage request, string userName, string password, bool rememberMe = false)
         {
             if (!ModelState.IsValid)

@@ -271,6 +271,10 @@
     <Content Include="app\common\authenticationService.js" />
     <Content Include="app\common\ngBootbox.js" />
     <Content Include="app\common\notificationService.js" />
+    <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-0.12.1.js" />
+    <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-0.12.1.min.js" />
+    <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-tpls-0.12.1.js" />
+    <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-tpls-0.12.1.min.js" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap.js" />

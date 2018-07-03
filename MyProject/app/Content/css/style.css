@@ -9908,3 +9908,6 @@ span.customSelect.changed {
         padding-top: 2%;
     padding-bottom: 1%;
 }
+.app-modal-window .modal-dialog {
+  width: 40%;
+}

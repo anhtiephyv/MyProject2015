@@ -1,7 +1,7 @@
 ﻿define(['app', 'restangular'], function (app) {
     var app = angular.module('MyApp', ['restangular']);
-    app.controller('loginController', ['$scope', '$injector', '$location', 'authService',
-    function ($scope, $injector, $localtion, authService) {
+    app.controller('loginController', ['$scope', '$injector', '$location', 'authService','authenticationService','authData',
+    function ($scope, $injector, $localtion, authService,authenticationService,authData) {
         debugger;
     
         $scope.loginData = {
@@ -15,8 +15,16 @@
 function success(response) {
     // do successful stuff here  
     debugger;
-    localStorage.setItem('userToken', response.data.access_token);
-    localStorage.setItem('isAuth', true);
+    localStorage.setItem('TokenInfo', response.data);
+
+    userInfo = {
+        accessToken: response.data.access_token,
+        userName: response.data.userName
+    };
+    authenticationService.setTokenInfo(userInfo);
+    authData.authenticationData.IsAuthenticated = true;
+    authData.authenticationData.userName = response.data.userName;
+    authData.authenticationData.accessToken = response.data.access_token;
     var stateService = $injector.get('$state');
     stateService.go('home');
 },

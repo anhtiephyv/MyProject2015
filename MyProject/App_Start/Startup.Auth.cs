@@ -24,6 +24,7 @@ namespace MyProject
 {
     public partial class Startup
     {
+        public static string PublicClientId { get; private set; }
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -77,14 +78,14 @@ namespace MyProject
             //    ClientSecret = ""
             //});
             app.UseCors(CorsOptions.AllowAll);
+            PublicClientId = "self";
             OAuthAuthorizationServerOptions options = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/token"),
-                Provider = new ApplicationOAuthProviderController(),
-                AuthorizeEndpointPath = new PathString("/api/Account/Login"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-            AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-            AuthenticationMode = AuthenticationMode.Active,
+                TokenEndpointPath = new PathString("/Token"),
+                Provider = new ApplicationOAuthProviderController(PublicClientId),
+                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                // Note: Remove the following line before you deploy to production:
                 AllowInsecureHttp = true
                
             };

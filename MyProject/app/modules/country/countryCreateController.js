@@ -1,128 +1,63 @@
 ﻿(function (app) {
     'use strict';
    
-    app.controller('countryCreateController',['$scope', 'apiService', 'notificationService', '$filter','$dialogs',
-    function userListController($scope, apiService, notificationService, $filter,$dialogs) {
-
-        debugger;
-        $scope.loading = true;
-        $scope.data = [];
-        $scope.page = 0;
-        $scope.pageCount = 0;
-        $scope.search = search;
-        $scope.clearSearch = clearSearch;
-        $scope.deleteItem = deleteItem;
-        $scope.selectAll = selectAll;
-
-        $scope.deleteMultiple = deleteMultiple;
-
-        function deleteMultiple() {
-            debugger;
-            var listId = [];
-            $.each($scope.selected, function (i, item) {
-                listId.push(item.ID);
-            });
-            var config = {
-                params: {
-                    checkedList: JSON.stringify(listId)
-                }
-            }
-            apiService.del('api/applicationGroup/deletemulti', config, function (result) {
-                notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
-                search();
-            }, function (error) {
-                notificationService.displayError('Xóa không thành công');
-            });
+    app.controller('countryCreateController', ['$scope', 'apiService', 'notificationService', '$filter',
+    function productAddController($scope, apiService, notificationService, $filter) {
+        $scope.product = {
+            CreatedDate: new Date(),
+            Status: true,
         }
-
-        $scope.isAll = false;
-        function selectAll() {
-            if ($scope.isAll === false) {
-                angular.forEach($scope.data, function (item) {
-                    item.checked = true;
-                });
-                $scope.isAll = true;
-            } else {
-                angular.forEach($scope.data, function (item) {
-                    item.checked = false;
-                });
-                $scope.isAll = false;
-            }
+        $scope.ckeditorOptions = {
+            languague: 'vi',
+            height: '200px'
         }
+        $scope.AddProduct = AddProduct;
 
-        $scope.$watch("data", function (n, o) {
-            var checked = $filter("filter")(n, { checked: true });
-            if (checked.length) {
-                $scope.selected = checked;
-                $('#btnDelete').removeAttr('disabled');
-            } else {
-                $('#btnDelete').attr('disabled', 'disabled');
-            }
-        }, true);
+        $scope.GetSeoTitle = GetSeoTitle;
 
-        function deleteItem(id) {
-            bootbox.confirm('Bạn có chắc muốn xóa?')
-                .then(function () {
-                    var config = {
-                        params: {
-                            id: id
-                        }
-                    }
-                    apiService.del('/api/applicationGroup/delete', config, function () {
-                        notificationService.displaySuccess('Đã xóa thành công.');
-                        search();
-                    },
-                    function () {
-                        notificationService.displayError('Xóa không thành công.');
-                    });
+
+
+
+        function AddProduct() {
+
+            $scope.product.MoreImages = JSON.stringify($scope.moreImages)
+            apiService.post('api/product/create', $scope.product,
+                function (result) {
+                    notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
+                    $state.go('products');
+                }, function (error) {
+                    notificationService.displayError('Thêm mới không thành công.');
                 });
         }
-        function search(page) {
-            page = page || 0;
-
-            $scope.loading = true;
-            var config = {
-                params: {
-                    page: page,
-                    pageSize: 10,
-                    orderby: "CountryName",
-                    sortDir: "asc",
-                    filter: $scope.filterExpression
-                }
-            }
-
-            apiService.get('api/Country/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
-        }
-
-        function dataLoadCompleted(result) {
-            $scope.data = result.data.Items;
-            $scope.page = result.data.Page;
-            $scope.pagesCount = result.data.TotalPages;
-            $scope.totalCount = result.data.TotalCount;
-            $scope.loading = false;
-
-            if ($scope.filterExpression && $scope.filterExpression.length) {
-                notificationService.displayInfo(result.data.Items.length + ' items found');
-            }
-        }
-        function dataLoadFailed(response) {
-            notificationService.displayError(response.data);
-        }
-
-        function clearSearch() {
-            $scope.filterExpression = '';
-            search();
-        }
-
-        $scope.search();
-        function create(){
-            dlg = $dialogs.create('/app/modules/country/countryCreate.html', 'countryCreateController', {}, { key: false, back: 'static' });
-            dlg.result.then(function(name){
-                $scope.name = name;
-            },function(){
-                $scope.name = 'You decided not to enter in your name, that makes me sad.';
+        function loadProductCategory() {
+            apiService.get('api/productcategory/getallparents', null, function (result) {
+                $scope.productCategories = result.data;
+            }, function () {
+                console.log('Cannot get list parent');
             });
-        };
-    
+        }
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.product.Image = fileUrl;
+                })
+            }
+            finder.popup();
+        }
+
+        $scope.moreImages = [];
+
+        $scope.ChooseMoreImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                })
+
+            }
+            finder.popup();
+        }
+        loadProductCategory();
     }]);
 })(angular.module('MyApp'));

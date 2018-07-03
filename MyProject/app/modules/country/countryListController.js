@@ -115,21 +115,29 @@
         }
 
         $scope.search();
-        function create(){
-
-            $modal.open({
-                templateUrl: '/app/modules/country/countryCreate.html', // loads the template
-                backdrop: true, // setting backdrop allows us to close the modal window on clicking outside the modal window
-                windowClass: 'modal', // windowClass - additional CSS class(es) to be added to a modal window template
-                controller: function ($scope, $modalInstance, $log) {
+        function create() {
+            var modalHtml = 'modules/country/countryCreate.html';
          
-                },
-                resolve: {
-                    user: function () {
-                        return $scope.user;
-                    }
-                }
-            });//end of modal.open
+            require(
+           [
+            '/app/modules/country/countryCreateController.js'
+           ],
+           function (countryCreateController) {
+               $modal.open({
+                   templateUrl: modalHtml, // loads the template
+                  
+                  // windowClass: 'modal-dialog modal-sm', // windowClass - additional CSS class(es) to be added to a modal window template
+                   controller: countryCreateController,
+                   windowClass: 'app-modal-window',
+                   backdrop: true,
+                   resolve: {
+                       user: function () {
+                           return $scope.user;
+                       }
+                   }
+               });//end of modal.open
+           });
+        
         };
     
     }]);
