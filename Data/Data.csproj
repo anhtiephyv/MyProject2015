@@ -103,6 +103,10 @@
     <Compile Include="Migrations\201806200248126_AddCountry.Designer.cs">
       <DependentUpon>201806200248126_AddCountry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807041730035_them_truong_trong_country.cs" />
+    <Compile Include="Migrations\201807041730035_them_truong_trong_country.Designer.cs">
+      <DependentUpon>201807041730035_them_truong_trong_country.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -131,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806200248126_AddCountry.resx">
       <DependentUpon>201806200248126_AddCountry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807041730035_them_truong_trong_country.resx">
+      <DependentUpon>201807041730035_them_truong_trong_country.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

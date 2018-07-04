@@ -16,6 +16,9 @@ namespace Data.Models
         //public string ProductSeri { get; set; }
         public string CountryName { get; set; }
         public byte[] CountryFlag { get; set; }
+        public byte[] FileUpload { get; set; }
+        public string FileUploadName { get; set; }
+        public string FileUploadType { get; set; }
         public string CountryCronyms { get; set; }
         public int CountryStatus { get; set; }
     }

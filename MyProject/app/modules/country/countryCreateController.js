@@ -2,25 +2,24 @@
     'use strict';
    
     app.controller('countryCreateController', ['$scope', 'apiService', 'notificationService', '$filter',
-    function productAddController($scope, apiService, notificationService, $filter) {
-        $scope.product = {
-            CreatedDate: new Date(),
-            Status: true,
+    function countryCreateController($scope, apiService, notificationService, $filter) {
+        $scope.country = {
+            CountryName:"",
+            CountryCronyms: "",
+            CountryFlag: null,
+            CountryStatus: "1",
+            FileUpLoad: null,
+            FileUploadName: null,
+            FileType:null,
         }
         $scope.ckeditorOptions = {
             languague: 'vi',
             height: '200px'
         }
-        $scope.AddProduct = AddProduct;
-
-        $scope.GetSeoTitle = GetSeoTitle;
-
-
-
-
-        function AddProduct() {
-
-            $scope.product.MoreImages = JSON.stringify($scope.moreImages)
+        $scope.AddCountry = 
+        function AddCountry() {
+            debugger;
+            //$scope.product.MoreImages = JSON.stringify($scope.moreImages)
             apiService.post('api/product/create', $scope.product,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');

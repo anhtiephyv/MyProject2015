@@ -49,4 +49,59 @@ define(['app'], function (app) {
         }
     }
 
+    app.directive("fileread", [function () {
+        return {
+            scope: {
+                fileread: "=",
+            },
+            restrict: 'A',
+            link: function (scope, element, attributes) {
+                debugger;
+                element.bind("change", function (changeEvent) {
+                    debugger;
+                    var reader = new FileReader();
+                    reader.onload = function (loadEvent) {
+                        scope.$apply(function () {
+                            scope.fileread = loadEvent.target.result;
+                            var rawLog = reader.result;
+                            console.log(rawLog);
+                        });
+                    }
+                    if (changeEvent.target.files[0] != undefined && changeEvent.target.files[0] != null) {
+                        reader.readAsDataURL(changeEvent.target.files[0]);
+                    }
+                    else
+                    {
+                        scope.fileread = null;
+                    }
+                });
+            }
+        }
+
+    }]);
+    app.directive("filedirective", [function () {
+        return {
+            scope: {
+                filetype: "=",
+                filerName: "="
+            },
+            link: function (scope, element, attributes) {
+                debugger;
+                element.bind("change", function (changeEvent) {
+                    if (changeEvent.target.files[0] != undefined && changeEvent.target.files[0] != null) {
+                        scope.$apply(function () {
+                            scope.filerName = changeEvent.target.files[0].name;
+                            scope.filetype = changeEvent.target.files[0].type;
+                        });
+                    }
+                    else
+                    {
+                        scope.filerName = null;
+                        scope.filetype = null;
+                    }
+                });
+            }
+        }
+    }]);
+
 })
