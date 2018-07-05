@@ -44,5 +44,6 @@ namespace Data.Base
             System.Reflection.PropertyInfo propertyInfo = obj.GetType().GetProperty(property);
             return propertyInfo.GetValue(obj, null);
         }
+
     }
 }

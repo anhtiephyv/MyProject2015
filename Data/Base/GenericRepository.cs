@@ -7,6 +7,7 @@ using Data.DBContext;
 using System.Data.Entity;
 using Data.Base;
 using System.Linq.Expressions;
+using System.Reflection;
 namespace Data.Base
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
@@ -111,13 +112,14 @@ The code in the Get method creates an IQueryable object and then applies the fil
             }
             if (orderBy != null)
             {
-                //   query = query.OrderByName(orderBy, sortDir).AsQueryable();
+                var OrderExpression = GetOrderBy(orderBy, sortDir);
+              //  OrderExpression(query).sk;
             }
             int skipCount = page * pageSize;
             //   qu
-            //  query = query.AsQueryable().Skip(skipCount).Take(pageSize);
+              query = query.Skip(skipCount).Take(pageSize).AsQueryable();
 
-            return query.AsQueryable();
+            return query;
         }
         // Get By ID
         public virtual TEntity GetByID(object id)
@@ -128,6 +130,7 @@ The code in the Get method creates an IQueryable object and then applies the fil
         public virtual void Create(TEntity entity)
         {
             dbSet.Add(entity);
+            context.SaveChanges();
         }
         //Delete
         public virtual void Delete(object id)
@@ -154,6 +157,7 @@ The code in the Get method creates an IQueryable object and then applies the fil
         public virtual IEnumerable<TEntity> GetMultiPaging(Expression<Func<TEntity, bool>> predicate, out int total, string orderBy = null,
             string sortDir = null, int index = 0, int size = 20, string[] includes = null)
         {
+
             int skipCount = index * size;
             IQueryable<TEntity> _resetSet;
 
@@ -169,13 +173,35 @@ The code in the Get method creates an IQueryable object and then applies the fil
             {
                 _resetSet = predicate != null ? dbSet.Where<TEntity>(predicate).AsQueryable() : dbSet.AsQueryable();
             }
-            //if (orderBy != null)
-            //{
-            //    _resetSet = _resetSet.OrderByName(orderBy,sortDir).AsQueryable();
-            //}
-            _resetSet = skipCount == 0 ? _resetSet.Take(size) : _resetSet.Skip(skipCount).Take(size);
             total = _resetSet.Count();
+            _resetSet = skipCount == 0 ? _resetSet.Take(size) : GetOrderBy(orderBy, sortDir)(_resetSet).Skip(skipCount).Take(size);
+
             return _resetSet.AsQueryable();
+        }
+        public static Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> GetOrderBy(string orderColumn, string orderType)
+        {
+            Type typeQueryable = typeof(IQueryable<TEntity>);
+            ParameterExpression argQueryable = Expression.Parameter(typeQueryable, "p");
+            var outerExpression = Expression.Lambda(argQueryable, argQueryable);
+            string[] props = orderColumn.Split('.');
+            IQueryable<TEntity> query = new List<TEntity>().AsQueryable<TEntity>();
+            Type type = typeof(TEntity);
+            ParameterExpression arg = Expression.Parameter(type, "x");
+
+            Expression expr = arg;
+            foreach (string prop in props)
+            {
+                PropertyInfo pi = type.GetProperty(prop, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                expr = Expression.Property(expr, pi);
+                type = pi.PropertyType;
+            }
+            LambdaExpression lambda = Expression.Lambda(expr, arg);
+            string methodName = orderType == "asc" ? "OrderBy" : "OrderByDescending";
+
+            MethodCallExpression resultExp =
+                Expression.Call(typeof(Queryable), methodName, new Type[] { typeof(TEntity), type }, outerExpression.Body, Expression.Quote(lambda));
+            var finalLambda = Expression.Lambda(resultExp, argQueryable);
+            return (Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>)finalLambda.Compile();
         }
     }
 }

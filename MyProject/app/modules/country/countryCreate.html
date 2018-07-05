@@ -30,7 +30,7 @@
                     <label class="col-sm-2 control-label">Ảnh</label>
                     <div class="col-sm-6">
 
-                        <img ng-src="{{country.CountryFlag}}" width="128px" height="128px" />
+                        <img ng-src="data:image/jpeg;base64,{{country.CountryFlag}}" width="128px" height="128px" />
 
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <label class="col-sm-2 control-label">File</label>
                     <div class="col-sm-6">
 
-                        <input type="file" filedirective="{filetype:country.FileType,filerName:country.FileUploadName}" class="form-control" accept=".jpg,.jpeg,.png">
+                        <input type="file" filedirective filetype="{{country.FileType}}" filename="{{country.FileUploadName}}" class="form-control" accept=".jpg,.jpeg,.png">
 
                     </div>
                 </div>-->

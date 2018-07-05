@@ -21,11 +21,11 @@ namespace MyProject.Api
     {
         //private IAppUsersService _usersService;
         private ICountryService _Country;
-        private ICountryRepository _CountryRepository;
-        public CountryController(ICountryService CountryService, ICountryRepository CountryRepository)
+       // private ICountryRepository _CountryRepository;
+        public CountryController(ICountryService CountryService)
         {
             _Country = CountryService;
-            _CountryRepository = CountryRepository;
+         //   _CountryRepository = CountryRepository;
         }
         //public ApplicationUserController()
         //{
@@ -44,6 +44,7 @@ namespace MyProject.Api
                 int totalRow = 0;
          //       var Orderprop = helpler.GetPropertyValue(typeof(Country), orderby);
                 var model = _Country.GetMultiPaging(x => x.CountryName != null, out totalRow, orderby, sortDir, page, pageSize, null );
+                var list = model.Select(s => new { ID = s.CountryID, Name = s.CountryName }).ToList();
                 IEnumerable<CountryModel> modelVm = Mapper.Map<IEnumerable<Country>, IEnumerable<CountryModel>>(model);
 
                 PaginationSet<CountryModel> pagedSet = new PaginationSet<CountryModel>()
@@ -55,6 +56,31 @@ namespace MyProject.Api
               };
 
                 response = request.CreateResponse(HttpStatusCode.OK, pagedSet);
+
+                return response;
+            });
+        }
+        [Route("create")]
+        [HttpPost]
+        public HttpResponseMessage Create(HttpRequestMessage request, CountryModel countryVm)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var modelVm = Mapper.Map<CountryModel, Country>(countryVm);
+                
+                    _Country.Create(modelVm);
+                    _Country.Save();
+
+                    var responseData = Mapper.Map<Country, CountryModel>(modelVm);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
 
                 return response;
             });

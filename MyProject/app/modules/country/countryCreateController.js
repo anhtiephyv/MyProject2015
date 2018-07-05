@@ -1,8 +1,8 @@
 ﻿(function (app) {
     'use strict';
    
-    app.controller('countryCreateController', ['$scope', 'apiService', 'notificationService', '$filter',
-    function countryCreateController($scope, apiService, notificationService, $filter) {
+    app.controller('countryCreateController', ['$scope', 'apiService', 'notificationService', '$filter', '$injector', '$rootScope', 
+    function countryCreateController($scope, apiService, notificationService, $filter, $injector, $rootScope) {
         $scope.country = {
             CountryName:"",
             CountryCronyms: "",
@@ -12,51 +12,25 @@
             FileUploadName: null,
             FileType:null,
         }
-        $scope.ckeditorOptions = {
-            languague: 'vi',
-            height: '200px'
-        }
         $scope.AddCountry = 
         function AddCountry() {
             debugger;
             //$scope.product.MoreImages = JSON.stringify($scope.moreImages)
-            apiService.post('api/product/create', $scope.product,
+            apiService.post('api/country/create', $scope.country,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
-                    $state.go('products');
+
+                    debugger;
+                    $rootScope.clearSearch();
+                    $rootScope.modalClose();
+                  //  $state.go('country_list');
                 }, function (error) {
                     notificationService.displayError('Thêm mới không thành công.');
                 });
         }
-        function loadProductCategory() {
-            apiService.get('api/productcategory/getallparents', null, function (result) {
-                $scope.productCategories = result.data;
-            }, function () {
-                console.log('Cannot get list parent');
-            });
-        }
-        $scope.ChooseImage = function () {
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (fileUrl) {
-                $scope.$apply(function () {
-                    $scope.product.Image = fileUrl;
-                })
-            }
-            finder.popup();
-        }
+        $scope.closeModal =
+function closeModal() {
 
-        $scope.moreImages = [];
-
-        $scope.ChooseMoreImage = function () {
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (fileUrl) {
-                $scope.$apply(function () {
-                    $scope.moreImages.push(fileUrl);
-                })
-
-            }
-            finder.popup();
-        }
-        loadProductCategory();
+}
     }]);
 })(angular.module('MyApp'));

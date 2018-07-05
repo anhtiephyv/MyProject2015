@@ -1,8 +1,8 @@
 ﻿(function (app) {
     'use strict';
     debugger;
-    app.controller('countryListController', ['$scope', 'apiService', 'notificationService', '$filter', '$modal',
-    function userListController($scope, apiService, notificationService, $filter,$modal) {
+    app.controller('countryListController', ['$scope', 'apiService', 'notificationService', '$filter', '$modal','$rootScope',
+    function userListController($scope, apiService, notificationService, $filter,$modal,$rootScope) {
 
         debugger;
         $scope.loading = true;
@@ -10,7 +10,7 @@
         $scope.page = 0;
         $scope.pageCount = 0;
         $scope.search = search;
-        $scope.clearSearch = clearSearch;
+        $rootScope.clearSearch = clearSearch;
         $scope.deleteItem = deleteItem;
         $scope.selectAll = selectAll;
         $scope.create = create;
@@ -79,14 +79,14 @@
         }
         function search(page) {
             page = page || 0;
-
+            debugger;
             $scope.loading = true;
             var config = {
                 params: {
                     page: page,
                     pageSize: 10,
-                    orderby: "CountryName",
-                    sortDir: "asc",
+                    orderby: "CountryID",
+                    sortDir: "desc",
                     filter: $scope.filterExpression
                 }
             }
@@ -123,21 +123,19 @@
             '/app/modules/country/countryCreateController.js'
            ],
            function (countryCreateController) {
-               $modal.open({
+               $scope.myModalInstance = $modal.open({
                    templateUrl: modalHtml, // loads the template
                   
                   // windowClass: 'modal-dialog modal-sm', // windowClass - additional CSS class(es) to be added to a modal window template
                    controller: countryCreateController,
                    windowClass: 'app-modal-window',
                    backdrop: true,
-                   resolve: {
-                       user: function () {
-                           return $scope.user;
-                       }
-                   }
                });//end of modal.open
            });
-        
+            $rootScope.modalClose = function () {
+                $scope.myModalInstance.close();
+            }
+
         };
     
     }]);

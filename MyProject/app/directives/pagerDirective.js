@@ -59,20 +59,79 @@ define(['app'], function (app) {
                 debugger;
                 element.bind("change", function (changeEvent) {
                     debugger;
-                    var reader = new FileReader();
-                    reader.onload = function (loadEvent) {
-                        scope.$apply(function () {
-                            scope.fileread = loadEvent.target.result;
-                            var rawLog = reader.result;
-                            console.log(rawLog);
-                        });
-                    }
+              
                     if (changeEvent.target.files[0] != undefined && changeEvent.target.files[0] != null) {
+                        var reader = new FileReader();
+                        reader.onload = function (loadEvent) {
+                            scope.$apply(function () {
+                                scope.fileread = loadEvent.target.result.split(",")[1];
+                                var rawLog = reader.result;
+                            });
+                        }
                         reader.readAsDataURL(changeEvent.target.files[0]);
                     }
                     else
                     {
                         scope.fileread = null;
+                    }
+                });
+            }
+        }
+
+    }]);
+    app.directive("filetype", [function () {
+        return {
+            scope: {
+                filetype: "=",
+            },
+            restrict: 'A',
+            link: function (scope, element, attributes) {
+                debugger;
+                element.bind("change", function (changeEvent) {
+                    debugger;
+
+                    if (changeEvent.target.files[0] != undefined && changeEvent.target.files[0] != null) {
+                        var reader = new FileReader();
+                        reader.onload = function (loadEvent) {
+                            scope.$apply(function () {
+                                scope.filetype = hangeEvent.target.files[0].type;
+                                var rawLog = reader.result;
+                            });
+                        }
+                        reader.readAsDataURL(changeEvent.target.files[0]);
+                    }
+                    else {
+                        scope.filetype = null;
+                    }
+                });
+            }
+        }
+
+    }]);
+    app.directive("filename", [function () {
+        return {
+            scope: {
+                filename: "=",
+            },
+            restrict: 'A',
+            link: function (scope, element, attributes) {
+                debugger;
+                element.bind("change", function (changeEvent) {
+                    debugger;
+
+                    if (changeEvent.target.files[0] != undefined && changeEvent.target.files[0] != null) {
+                        var reader = new FileReader();
+                        reader.onload = function (loadEvent) {
+                            scope.$apply(function () {
+                                scope.filename = hangeEvent.target.files[0].name;
+                                var rawLog = reader.result;
+                                console.log(rawLog);
+                            });
+                        }
+                        reader.readAsDataURL(changeEvent.target.files[0]);
+                    }
+                    else {
+                        scope.filename = null;
                     }
                 });
             }
