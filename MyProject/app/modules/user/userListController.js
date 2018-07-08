@@ -1,8 +1,8 @@
 ﻿(function (app) {
     'use strict';
-   
-    app.controller('userListController',['$scope', 'apiService', 'notificationService', '$filter',
-    function userListController($scope, apiService, notificationService, $filter) {
+    debugger;
+    app.controller('userListController', ['$scope', 'apiService', 'notificationService', '$filter', '$modal', '$rootScope', '$http',
+    function userListController($scope, apiService, notificationService, $filter,$modal,$rootScope,$http) {
 
         debugger;
         $scope.loading = true;
@@ -10,28 +10,49 @@
         $scope.page = 0;
         $scope.pageCount = 0;
         $scope.search = search;
-        $scope.clearSearch = clearSearch;
+        $rootScope.clearSearch = clearSearch;
         $scope.deleteItem = deleteItem;
         $scope.selectAll = selectAll;
-
+        $scope.create = create;
+        $scope.editCountry = editCountry;
         $scope.deleteMultiple = deleteMultiple;
-
+        $scope.keyword = '';
         function deleteMultiple() {
-            var listId = [];
-            $.each($scope.selected, function (i, item) {
-                listId.push(item.ID);
-            });
-            var config = {
-                params: {
-                    checkedList: JSON.stringify(listId)
+            bootbox.confirm({
+                message: "Bạn có chắc chắn muốn xóa những nước này?",
+                buttons: {
+                    confirm: {
+                        label: 'Có',
+                        className: 'btn-primary'
+                    },
+                    cancel: {
+                        label: 'Không',
+                        className: 'btn-default'
+                    }
+                },
+                callback: function (result) {
+                    debugger;
+                    if (result) {
+                        var listId = [];
+                        $.each($scope.selected, function (i, item) {
+                            listId.push(item.CountryID);
+                        });
+                        var config = {
+                            params: {
+                                checkedList: JSON.stringify(listId)
+                            }
+                        }
+                        apiService.del('api/Country/deletemulti', config, function (result) {
+                            notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
+                            search();
+                        }, function (error) {
+                            notificationService.displayError('Xóa không thành công');
+                        });
+                    }
                 }
-            }
-            apiService.del('api/applicationGroup/deletemulti', config, function (result) {
-                notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
-                search();
-            }, function (error) {
-                notificationService.displayError('Xóa không thành công');
             });
+            debugger;
+   
         }
 
         $scope.isAll = false;
@@ -60,37 +81,72 @@
         }, true);
 
         function deleteItem(id) {
-            bootbox.confirm('Bạn có chắc muốn xóa?')
-                .then(function () {
-                    var config = {
-                        params: {
-                            id: id
-                        }
-                    }
-                    apiService.del('/api/applicationGroup/delete', config, function () {
-                        notificationService.displaySuccess('Đã xóa thành công.');
-                        search();
+            //bootbox.confirm('Bạn có chắc muốn xóa?')
+            //    .then(function () {
+            //        var config = {
+            //            params: {
+            //                id: id
+            //            }
+            //        }
+            //        apiService.del('/api/applicationGroup/delete', config, function () {
+            //            notificationService.displaySuccess('Đã xóa thành công.');
+            //            search();
+            //        },
+            //        function () {
+            //            notificationService.displayError('Xóa không thành công.');
+            //        });
+            //    });
+            //bootbox.confirm("Bạn có chắc muốn xóa?", function () {
+            //    debugger;
+            //});
+            bootbox.confirm({
+                message: "Bạn có chắc chắn muốn xóa?",
+                buttons: {
+                    confirm: {
+                        label: 'Có',
+                        className: 'btn-primary'
                     },
-                    function () {
-                        notificationService.displayError('Xóa không thành công.');
-                    });
-                });
+                    cancel: {
+                        label: 'Không',
+                        className: 'btn-default'
+                    }
+                },
+                callback: function (result) {
+                    debugger;
+                    if (result) {
+                        var config = {
+                            params: {
+                                id: id
+                            }
+                        }
+                        apiService.del('/api/Country/delete/', config, function () {
+                            notificationService.displaySuccess('Đã xóa thành công.');
+                            search();
+                        },
+                        function () {
+                            notificationService.displayError('Xóa không thành công.');
+                        });
+                    }
+                }
+            });
+
         }
         function search(page) {
             page = page || 0;
-
+            debugger;
             $scope.loading = true;
             var config = {
                 params: {
+                    keyword:$scope.keyword,
                     page: page,
                     pageSize: 10,
-                    orderby: "UserName",
-					sortDir: "asc",
+                    orderby: "UserID",
+                    sortDir: "desc",
                     filter: $scope.filterExpression
                 }
             }
 
-            apiService.get('api/ApplicationUser/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
+            apiService.get('api/Users/getlistpaging', config, dataLoadCompleted, dataLoadFailed);
         }
 
         function dataLoadCompleted(result) {
@@ -114,5 +170,47 @@
         }
 
         $scope.search();
+        function create() {
+            var modalHtml = 'modules/user/userCreate.html';
+         
+            require(
+           [
+            '/app/modules/user/userCreateController.js'
+           ],
+           function (userCreateController) {
+               $scope.myModalInstance = $modal.open({
+                   templateUrl: modalHtml, // loads the template
+                  
+                  // windowClass: 'modal-dialog modal-sm', // windowClass - additional CSS class(es) to be added to a modal window template
+                   controller: userCreateController,
+                   windowClass: 'app-modal-window',
+                   backdrop: true,
+               });//end of modal.open
+           });
+            $rootScope.modalClose = function () {
+                $scope.myModalInstance.close();
+            }
+
+        };
+        function editCountry(id) {
+            var modalHtml = 'modules/country/countryEdit.html';
+            debugger;
+            require(
+           [
+            '/app/modules/country/countryEditController.js'
+           ],
+           function (countryEditController) {
+               $scope.myModalInstance = $modal.open({
+                   templateUrl: modalHtml,
+                   controller: countryEditController,
+                   windowClass: 'app-modal-window',
+                   backdrop: true,
+               });
+           });
+            $rootScope.modalClose = function () {
+                $scope.myModalInstance.close();
+            }
+            $rootScope.countryId = id;
+        };
     }]);
 })(angular.module('MyApp'));

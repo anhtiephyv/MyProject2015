@@ -23,7 +23,8 @@ namespace MyProject.Mapping
                 //cfg.CreateMap<ContactDetail, ContactDetailViewModel>();
                 //cfg.CreateMap<ApplicationGroup, ApplicationGroupViewModel>();
                 cfg.CreateMap<Country, CountryModel>();
-                cfg.CreateMap<ApplicationUser, UserModel>();
+                cfg.CreateMap<ApplicationUser, AdminModel>();
+                cfg.CreateMap<Users, UsersModel>();
             });
         }
 

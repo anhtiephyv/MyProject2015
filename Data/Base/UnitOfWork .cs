@@ -11,34 +11,7 @@ namespace Data.Base
     {
         private MyShopDBContext context = new MyShopDBContext();
       //  private GenericRepository<Admin> adminRepository;
-        private GenericRepository<Category> categoryRepository;
 
-        //public GenericRepository<Admin> AdminRepository
-        //{
-        //    get
-        //    {
-
-        //        if (this.adminRepository == null)
-        //        {
-        //            this.adminRepository = new GenericRepository<Admin>(context);
-        //        }
-        //        return adminRepository;
-        //    }
-
-        //}
-
-        public GenericRepository<Category> CategoryRepository
-        {
-            get
-            {
-
-                if (this.categoryRepository == null)
-                {
-                    this.categoryRepository = new GenericRepository<Category>(context);
-                }
-                return categoryRepository;
-            }
-        }
         public MyShopDBContext Init(){
             return context ?? (context = new MyShopDBContext());
         }

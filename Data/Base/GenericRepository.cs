@@ -130,13 +130,13 @@ The code in the Get method creates an IQueryable object and then applies the fil
         public virtual void Create(TEntity entity)
         {
             dbSet.Add(entity);
-            context.SaveChanges();
         }
         //Delete
         public virtual void Delete(object id)
         {
             TEntity entityToDelete = dbSet.Find(id);
             Delete(entityToDelete);
+          
         }
 
         public virtual void Delete(TEntity entityToDelete)
@@ -174,9 +174,13 @@ The code in the Get method creates an IQueryable object and then applies the fil
                 _resetSet = predicate != null ? dbSet.Where<TEntity>(predicate).AsQueryable() : dbSet.AsQueryable();
             }
             total = _resetSet.Count();
-            _resetSet = skipCount == 0 ? _resetSet.Take(size) : GetOrderBy(orderBy, sortDir)(_resetSet).Skip(skipCount).Take(size);
+            _resetSet = skipCount == 0 ? GetOrderBy(orderBy, sortDir)(_resetSet).Take(size) : GetOrderBy(orderBy, sortDir)(_resetSet).Skip(skipCount).Take(size);
 
             return _resetSet.AsQueryable();
+        }
+        public void Save()
+        {
+            context.SaveChanges();
         }
         public static Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> GetOrderBy(string orderColumn, string orderType)
         {

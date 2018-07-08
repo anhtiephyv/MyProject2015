@@ -238,8 +238,10 @@
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\ApplicationOAuthProviderController.cs" />
+    <Compile Include="Api\DownloadController.cs" />
     <Compile Include="Api\CountryController.cs" />
     <Compile Include="Api\ApplicationUserController.cs" />
+    <Compile Include="Api\UsersController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -260,8 +262,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Model\CountryModel.cs" />
-    <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\UsersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -271,6 +274,7 @@
     <Content Include="app\common\authenticationService.js" />
     <Content Include="app\common\ngBootbox.js" />
     <Content Include="app\common\notificationService.js" />
+    <Content Include="app\Content\css\toastr.css" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-0.12.1.js" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-0.12.1.min.js" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-tpls-0.12.1.js" />
@@ -286,14 +290,22 @@
     <None Include="app\Content\js\_references.js" />
     <Content Include="app\directives\pagerDirective.js" />
     <Content Include="app\directives\pagerDirective.html" />
+    <Content Include="app\modules\user\userCreate.html" />
+    <Content Include="app\modules\user\userCreateController.js" />
+    <Content Include="app\modules\user\countryEdit.html" />
+    <Content Include="app\modules\user\countryEditController.js" />
+    <Content Include="app\modules\user\userList.html" />
+    <Content Include="app\modules\user\userListController.js" />
     <Content Include="app\modules\country\countryCreate.html" />
+    <Content Include="app\modules\country\countryEdit.html" />
+    <Content Include="app\modules\country\countryEditController.js" />
     <Content Include="app\modules\country\countryCreateController.js" />
     <Content Include="app\modules\home\DashBoard.html" />
     <Content Include="app\modules\country\countryList.html" />
     <Content Include="app\modules\country\countryListController.js" />
-    <Content Include="app\modules\user\user.module.js" />
-    <Content Include="app\modules\user\userList.html" />
-    <Content Include="app\modules\user\userListController.js" />
+    <Content Include="app\modules\admin\user.module.js" />
+    <Content Include="app\modules\admin\adminList.html" />
+    <Content Include="app\modules\admin\adminListController.js" />
     <Content Include="app\app.js" />
     <Content Include="app\common\authData.js" />
     <Content Include="app\common\authService.js" />

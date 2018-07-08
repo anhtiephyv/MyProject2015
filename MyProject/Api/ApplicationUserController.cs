@@ -40,9 +40,9 @@ namespace MyProject.Api
                 int totalRow = 0;
 
                 var model = _userManager.Users;
-                  IEnumerable<UserModel> modelVm = Mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<UserModel>>(model);
+                  IEnumerable<AdminModel> modelVm = Mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<AdminModel>>(model);
 
-                  PaginationSet<UserModel> pagedSet = new PaginationSet<UserModel>()
+                  PaginationSet<AdminModel> pagedSet = new PaginationSet<AdminModel>()
                 {
                     Page = page,
                     TotalCount = model.Count(),

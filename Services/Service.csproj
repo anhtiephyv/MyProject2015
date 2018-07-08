@@ -44,7 +44,6 @@
     <Compile Include="Service\AdminService.cs" />
     <Compile Include="Service\CountriesService.cs" />
     <Compile Include="Service\UsersService.cs" />
-    <Compile Include="Service\CategorySerivce.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">

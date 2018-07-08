@@ -107,17 +107,19 @@
     <Compile Include="Migrations\201807041730035_them_truong_trong_country.Designer.cs">
       <DependentUpon>201807041730035_them_truong_trong_country.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807080111516_them_user_va_bang_lien_quan.cs" />
+    <Compile Include="Migrations\201807080111516_them_user_va_bang_lien_quan.Designer.cs">
+      <DependentUpon>201807080111516_them_user_va_bang_lien_quan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Country.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\UserCountry.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CountryRepository.cs" />
     <Compile Include="Repository\UsersRepository.cs" />
-    <Compile Include="Repository\CategoriesRepository.cs" />
-    <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\AdminRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807041730035_them_truong_trong_country.resx">
       <DependentUpon>201807041730035_them_truong_trong_country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807080111516_them_user_va_bang_lien_quan.resx">
+      <DependentUpon>201807080111516_them_user_va_bang_lien_quan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

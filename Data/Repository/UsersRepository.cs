@@ -1,22 +1,22 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using Data.DBContext;
-//using Data.Models;
-//using Data.Base;
-//namespace Data.Repository
-//{
-//    public interface ICountriesRepository : IGenericRepository<Country>
-//    {
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Data.DBContext;
+using Data.Models;
+using Data.Base;
+namespace Data.Repository
+{
+    public interface IUsersRepository : IGenericRepository<Users>
+    {
 
-//    }
-//    public class CountriesRepository : GenericRepository<Country>, ICountriesRepository
-//    {
-//        public CountriesRepository(MyShopDBContext DBcontext)
-//            : base(DBcontext)
-//        {
-//        }
-//    }
-//}
+    }
+    public class UsersRepository : GenericRepository<Users>, IUsersRepository
+    {
+        public UsersRepository(MyShopDBContext DBcontext)
+            : base(DBcontext)
+        {
+        }
+    }
+}

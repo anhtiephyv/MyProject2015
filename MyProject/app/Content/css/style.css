@@ -490,7 +490,7 @@ table tr th { color: #688a7e;}
 
     border-radius:0px;
 
-    background:rgba(255,255,255,0.9);
+ 
 
 }
 
@@ -9910,4 +9910,7 @@ span.customSelect.changed {
 }
 .app-modal-window .modal-dialog {
   width: 40%;
+}
+.errorMessage {
+    color: red;
 }

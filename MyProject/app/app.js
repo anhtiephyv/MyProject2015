@@ -172,27 +172,14 @@ define(['angularAMD', 'angular-ui-router', 'bootstrapUi'], function (angularAMD)
                     controllerUrl: '/app/modules/home/homeController.js',
                 }))
                 // Khai báo đường dẫn users
-                            .state('user_list', angularAMD.route({
-                                url: '/user_list',
+                            .state('admin_list', angularAMD.route({
+                                url: '/admin_list',
                                 parent: 'base',
-                                templateUrl: '/app/modules/user/userList.html',
-                                controller: 'userListController',
-                                controllerUrl: '/app/modules/user/userListController.js',
+                                templateUrl: '/app/modules/admin/userList.html',
+                                controller: 'adminListController',
+                                controllerUrl: '/app/modules/admin/adminListController.js',
                             }))
-                            .state('user_create', angularAMD.route({
-                                url: '/user_create',
-                                parent: 'base',
-                                templateUrl: '/app/modules/user/userCreate.html',
-                                controller: 'userCreateController',
-                                controllerUrl: '/app/modules/user/userCreateController.js',
-                            }))
-                              .state('user_edit', angularAMD.route({
-                                  url: '/user_edit/:id',
-                                  parent: 'base',
-                                  templateUrl: '/app/modules/user/userEdit.html',
-                                  controller: 'userEditController',
-                                  controllerUrl: '/app/modules/user/userEditController.js',
-                              }))
+                    
             // Khai báo đường dẫn countrys
                 .state('country_list', angularAMD.route({
                     url: '/country_list',
@@ -201,21 +188,15 @@ define(['angularAMD', 'angular-ui-router', 'bootstrapUi'], function (angularAMD)
                     controller: 'countryListController',
                     controllerUrl: '/app/modules/country/countryListController.js',
                 }))
-                            .state('country_create', angularAMD.route({
-                                url: '/country_create',
+            // Khai báo đường dẫn user
+                            .state('user_list', angularAMD.route({
+                                url: '/user_list',
                                 parent: 'base',
-                                templateUrl: '/app/modules/country/countryCreate.html',
-                                controller: 'countryCreateController',
-                                controllerUrl: '/app/modules/country/countryCreateController.js',
+                                templateUrl: '/app/modules/user/userList.html',
+                                controller: 'userListController',
+                                controllerUrl: '/app/modules/user/userListController.js',
                             }))
-                              .state('country_edit', angularAMD.route({
-                                  url: '/country_edit/:id',
-                                  parent: 'base',
-                                  templateUrl: '/app/modules/country/countryEdit.html',
-                                  controller: 'countryEditController',
-                                  controllerUrl: '/app/modules/country/countryEditController.js',
-                              }))
-            ;
+   ;
             
             $urlRouterProvider.otherwise("/login");
         }

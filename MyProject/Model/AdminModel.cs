@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyProject.Model
 {
-    public class UserModel
+    public class AdminModel
     {
 
         public string Id { get; set; }

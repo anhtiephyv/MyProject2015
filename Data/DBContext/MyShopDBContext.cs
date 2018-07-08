@@ -16,9 +16,8 @@ namespace Data.DBContext
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
         }
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Product> Product { get; set; }
         public DbSet<Country> Country { get; set; }
+        public DbSet<UserCountry> UserCountry { get; set; }
         //  public DbSet<ApplicationUser> ApplicationIdentity  { get; set;}
         public static MyShopDBContext Create()
         {

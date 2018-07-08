@@ -72,3 +72,5 @@ D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.them_truong_trong_coun
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.csproj.GenerateResource.Cache
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.dll
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.pdb
+D:\MyProject\MyProject2015\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.them_user_va_bang_lien_quan.resources

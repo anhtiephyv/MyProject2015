@@ -11,7 +11,8 @@
             get: get,
             post: post,
             put: put,
-            del: del
+            del: del,
+            getfile: getfile
         }
         function del(url, data, success, failure) {
         	url = "../" + url;
@@ -77,6 +78,12 @@
                     failure(error);
                 }
             });
+        }
+        function getfile(url) {
+            debugger;
+            url = "../" + url;
+            authenticationService.setHeader();
+            $http.get(url);
         }
         function setHeader() {
 

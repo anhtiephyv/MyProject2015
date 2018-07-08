@@ -50,12 +50,12 @@ namespace MyProject
 
 
             //Register Repositories
-            builder.RegisterAssemblyTypes(typeof(CategoriesRepository).Assembly)
+            builder.RegisterAssemblyTypes(typeof(CountryRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
 
             // Services
-            builder.RegisterAssemblyTypes(typeof(CategoryService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(CountryService).Assembly)
                .Where(t => t.Name.EndsWith("Service"))
                .AsImplementedInterfaces().InstancePerRequest();
 
