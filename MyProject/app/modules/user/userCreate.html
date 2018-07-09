@@ -7,46 +7,56 @@
         <div class="panel-body">
             <form class="form-horizontal " method="post" enctype="multipart/form-data" name="myForm" ng-submit="AddUser()">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Tên truy cập</label>
+                    <label class="col-sm-3 control-label">Tên truy cập<span style="color:red">(*)</span></label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="User.UserName" class="form-control"  required>
+                        <input type="text" ng-model="User.UserName" name="username" class="form-control" ng-pattern="/^[a-zA-Z0-9]*$/" required autofocus>
+                        <span style="color:red" ng-show="myForm.username.$error.pattern">Username viết liền không dấu</span>
 
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Họ</label>
+                    <label class="col-sm-3 control-label">Họ <span style="color:red">(*)</span></label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="User.FirstName" class="form-control">
+                        <input type="text" ng-model="User.FirstName" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Tên</label>
+                    <label class="col-sm-3 control-label">Tên<span style="color:red">(*)</span></label>
                     <div class="col-sm-6">                     
-                            <input type="text" ng-model="User.LastName" class="form-control">
+                            <input type="text" ng-model="User.LastName" class="form-control" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="User.Email" class="form-control">
+                        <input type="text" ng-model="User.Email" name="email" class="form-control" ng-pattern="/\S+@\S+\.\S+/">
+                        <span style="color:red" ng-show="myForm.email.$error.pattern">Enmail không đúng định dạng</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Số điện thoại</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="User.Phone" class="form-control" required>
+                        <input type="text" ng-model="User.Phone" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Địa chỉ</label>
                     <div class="col-sm-6">
-                        <input type="text" ng-model="User.Address" class="form-control" required>
+                        <input type="text" ng-model="User.Address" class="form-control">
                     </div>
+                   
+                </div>
+                <div class="form-group">
+                   
+                    <div class="col-sm-8">
+                        <dualmultiselect options="demoOptions"> </dualmultiselect>
+                    </div>
+           
                 </div>
                 <div class="form-group">
 
                     <div class="col-sm-3">
-                        <button title="Lưu" class="btn btn-primary btn-lg btn-block" type="submit">Lưu</button>
+                        <button title="Lưu" class="btn btn-primary btn-lg btn-block" ng-disabled="myForm.$invalid" type="submit">Lưu</button>
                     </div>
                     <div class="col-sm-3">
                         <button title="Thoát" class="btn btn-dark btn-lg btn-block" ng-click="Closemodal()" type="button">Thoát</button>

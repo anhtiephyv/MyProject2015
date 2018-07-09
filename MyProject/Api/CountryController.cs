@@ -110,7 +110,7 @@ namespace MyProject.Api
             var responseData = Mapper.Map<Country, CountryModel>(countryVm);
             response = request.CreateResponse(HttpStatusCode.Created, responseData);
             return response;
-            
+
 
         }
         //[Route("getFile/{id}")]
@@ -128,7 +128,7 @@ namespace MyProject.Api
         //        result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
         //        result.Content.Headers.ContentDisposition.FileName = countryVm.FileUploadName;
         //        return result;
-            
+
         //   // return new HttpResponseMessage(HttpStatusCode.NotFound);
         //}
         [Route("update")]
@@ -191,6 +191,19 @@ namespace MyProject.Api
                 return response;
             });
         }
+        [Route("getlist")]
+        [HttpGet]
+        public HttpResponseMessage GetList(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
 
+                var countryVm = _Country.Get(x => x.CountryStatus == 1).OrderBy(x => x.CountryName).Select(c => new SelectListModel { id = c.CountryID.ToString(), name = c.CountryName + " - " + c.CountryFlag }).ToArray();
+
+                response = request.CreateResponse(HttpStatusCode.Created, countryVm);
+                return response;
+            });
+        }
     }
 }

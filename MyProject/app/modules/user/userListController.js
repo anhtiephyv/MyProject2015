@@ -175,7 +175,7 @@
          
             require(
            [
-            '/app/modules/user/userCreateController.js'
+            '/app/modules/user/userCreateController.js', 'dualmultiselect'
            ],
            function (userCreateController) {
                $scope.myModalInstance = $modal.open({
@@ -212,5 +212,17 @@
             }
             $rootScope.countryId = id;
         };
+        $rootScope.listItem = [];
+        function getlistitems() {
+            apiService.get('/api/country/getlist/', null,
+        function (result) {
+            debugger;
+            $rootScope.listItem = result.data;
+        },
+        function (result) {
+            notificationService.displayError(result.data);
+        })
+        };
+        getlistitems();
     }]);
 })(angular.module('MyApp'));

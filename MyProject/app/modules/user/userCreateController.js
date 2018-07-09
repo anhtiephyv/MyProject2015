@@ -74,10 +74,26 @@ function setFiles(element) {
             debugger;
 
         }
+
         $scope.Closemodal = function () {
             debugger;
             $rootScope.modalClose();
         }
+        $scope.demoOptions = {
+            title: 'Phân quyền các nước cho người dùng',
+            filterPlaceHolder: 'Nhập vào đây để lọc các nước.',
+            labelAll: 'Tất cả nước',
+            labelSelected: 'Nước đã chọn',
+            helpMessage: ' Chọn vào tên nước để chuyển đổi',
+            /* angular will use this to filter your lists */
+            orderProperty: 'name',
+            /* this contains the initial list of all items (i.e. the left side) */
+            items: $rootScope.listItem,
+            /* this list should be initialized as empty or with any pre-selected items */
+            selectedItems: []
+        };
+    
+
     }]);
 
 })(angular.module('MyApp'));

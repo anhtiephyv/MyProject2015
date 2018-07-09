@@ -21,6 +21,8 @@
         'apiService': '../../common/apiService',
         'authenticationService': '../../common/authenticationService',
         'pagerDirective': '../../directives/pagerDirective',
+        'dualmultiselect': 'dualmultiselect',
+        'dualmultiselect.min': 'dualmultiselect.min'
         // 'dialogs': '../../common/dialogs.min',
      
     },
@@ -49,6 +51,8 @@
         "apiService": { deps: ['app', 'notificationService', 'authenticationService'] },
         'notificationService': ['app'],
         'pagerDirective': ['app'],
+        'dualmultiselect': ['angular'],
+        'dualmultiselect.min': ['angular']
        // 'dialogs': ['bootstrapUi','angular-ui-bootstrap','app']
 
     },
