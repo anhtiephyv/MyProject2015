@@ -294,10 +294,12 @@
     <None Include="app\Content\js\_references.js" />
     <Content Include="app\directives\pagerDirective.js" />
     <Content Include="app\directives\pagerDirective.html" />
+    <Content Include="app\modules\user\userAuthorized.html" />
     <Content Include="app\modules\user\userCreate.html" />
+    <Content Include="app\modules\user\userAuthorizedController.js" />
     <Content Include="app\modules\user\userCreateController.js" />
-    <Content Include="app\modules\user\countryEdit.html" />
-    <Content Include="app\modules\user\countryEditController.js" />
+    <Content Include="app\modules\user\userEdit.html" />
+    <Content Include="app\modules\user\userEditController.js" />
     <Content Include="app\modules\user\userList.html" />
     <Content Include="app\modules\user\userListController.js" />
     <Content Include="app\modules\country\countryCreate.html" />

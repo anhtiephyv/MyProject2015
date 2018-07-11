@@ -64,8 +64,9 @@
                 </td>
                 <td>
                     <!--<button class="btn btn-sm btn-primary" ng-click="editCountry(item.CountryID)"><i class="fa fa-pencil"></i></button>-->
-                    <button class="btn btn-sm btn-primary" ng-click="editCountry(item.CountryID)"><i class="fa fa-pencil"></i></button>
-                    <button class="btn  btn-sm btn-danger" ng-click="deleteItem(item.CountryID)"><i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-sm btn-success" title="Phân quyền quốc gia" ng-click="editAuthorized(item.UserID)"><i class="fa fa-cog"></i></button>
+                    <button class="btn btn-sm btn-primary" ng-click="editUser(item.UserID)"><i class="fa fa-pencil"></i></button>
+                    <button class="btn  btn-sm btn-danger" ng-click="deleteItem(item.UserID)"><i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>
 

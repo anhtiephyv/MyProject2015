@@ -11,9 +11,12 @@ namespace Data.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UserCountryID { get; set; }
         public int UserID { get; set; }
-        public string CountryId { get; set; }
-        public ICollection<Users> Users { get; set; }
-        public ICollection<Country> Country { get; set; }
+        public int CountryID { get; set; }
+        [ForeignKey("UserID")]
+        public virtual Users User { set; get; }
+        [ForeignKey("CountryID")]
+        public virtual Country Country { set; get; }
     }
 }

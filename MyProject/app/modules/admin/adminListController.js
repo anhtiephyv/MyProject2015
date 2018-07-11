@@ -83,7 +83,7 @@
             var config = {
                 params: {
                     page: page,
-                    pageSize: 10,
+                    pageSize: 1,
                     orderby: "UserName",
 					sortDir: "asc",
                     filter: $scope.filterExpression

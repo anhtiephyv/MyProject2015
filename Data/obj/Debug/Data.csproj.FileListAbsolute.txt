@@ -66,11 +66,7 @@ D:\MyProject\MyProject2015\Data\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 D:\MyProject\MyProject2015\Data\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\MyProject\MyProject2015\Data\bin\Debug\Newtonsoft.Json.xml
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.InitialCreate.resources
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.them_cho_applicationrole.resources
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.AddCountry.resources
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.them_truong_trong_country.resources
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.csproj.GenerateResource.Cache
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.dll
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.pdb
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.them_user_va_bang_lien_quan.resources

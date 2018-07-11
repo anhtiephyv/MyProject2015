@@ -22,9 +22,11 @@ namespace MyProject.Api
     public class CountryController : BaseController
     {
         private ICountryService _Country;
-        public CountryController(ICountryService CountryService)
+        private IUserCountryService _UserCountry;
+        public CountryController(ICountryService CountryService,IUserCountryService UserCountryService)
         {
             _Country = CountryService;
+            _UserCountry = UserCountryService;
         }
         [Route("getlistpaging")]
         [HttpGet]
@@ -84,7 +86,7 @@ namespace MyProject.Api
             {
                 HttpResponseMessage response = null;
                 var responseData = _Country.checkCodeExist(CountryCode, Id);
-                response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
             });
         }
@@ -96,7 +98,7 @@ namespace MyProject.Api
             {
                 HttpResponseMessage response = null;
                 var responseData = _Country.checkCodeExist(CountryCode, null);
-                response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
             });
         }
@@ -108,7 +110,7 @@ namespace MyProject.Api
             HttpResponseMessage response = null;
             var countryVm = _Country.GetByID(id);
             var responseData = Mapper.Map<Country, CountryModel>(countryVm);
-            response = request.CreateResponse(HttpStatusCode.Created, responseData);
+            response = request.CreateResponse(HttpStatusCode.OK, responseData);
             return response;
 
 
@@ -201,7 +203,53 @@ namespace MyProject.Api
 
                 var countryVm = _Country.Get(x => x.CountryStatus == 1).OrderBy(x => x.CountryName).Select(c => new SelectListModel { id = c.CountryID.ToString(), name = c.CountryName + " - " + c.CountryFlag }).ToArray();
 
-                response = request.CreateResponse(HttpStatusCode.Created, countryVm);
+                response = request.CreateResponse(HttpStatusCode.OK, countryVm);
+                return response;
+            });
+        }
+        [Route("GetSelectedCountry")]
+        [HttpGet]
+        public HttpResponseMessage GetSelectedCountry(HttpRequestMessage request, int userID)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+               var listSelectedCountry = _UserCountry.GetUserCountryByUserID(userID).Select(x=> x.CountryID).ToList();
+               var countryVm = _Country.Get(x => x.CountryStatus == 1 && listSelectedCountry.Contains(x.CountryID)).OrderBy(x => x.CountryName).Select(c => new SelectListModel { id = c.CountryID.ToString(), name = c.CountryName + " - " + c.CountryCronyms }).ToArray();
+
+                response = request.CreateResponse(HttpStatusCode.OK, countryVm);
+                return response;
+            });
+        }
+        [Route("GetUnSelectedCountry")]
+        [HttpGet]
+        public HttpResponseMessage GetUnSelectedCountry(HttpRequestMessage request, int userID)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                var listSelectedCountry = _UserCountry.GetUserCountryByUserID(userID).Select(x => x.CountryID).ToList();
+                var countryVm = _Country.Get(x => x.CountryStatus == 1 && !listSelectedCountry.Contains(x.CountryID)).OrderBy(x => x.CountryName).Select(c => new SelectListModel { id = c.CountryID.ToString(), name = c.CountryName + " - " + c.CountryCronyms }).ToArray();
+
+                response = request.CreateResponse(HttpStatusCode.OK, countryVm);
+                return response;
+            });
+        }
+        [Route("CreateUserCountry")]
+        [HttpPost]
+        public HttpResponseMessage CreateUserCountry(HttpRequestMessage request, int userID, List<SelectListModel> selectedselectedItems)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                var ListCountryID = _UserCountry.GetUserCountryByUserID(userID);
+                var ListDeleteUserCountry = ListCountryID.Where(x => !selectedselectedItems.Select(c=> Convert.ToInt32(c.id)).Contains(x.CountryID)).ToList();
+                var ListCreateUserCountryID = selectedselectedItems.Where(x => !ListCountryID.Select(c=> c.CountryID.ToString()).Contains(x.id)).ToList();
+                _UserCountry.DelelteUserCountry(ListDeleteUserCountry);
+                var ListCreateUserCountry = ListCreateUserCountryID.Select(c => new UserCountry { UserID = userID, CountryID = Convert.ToInt32(c.id) }).ToList();
+                _UserCountry.CreateUserCountry(ListCreateUserCountry);
+                _UserCountry.Save();
+                response = request.CreateResponse(HttpStatusCode.Created, 0);
                 return response;
             });
         }

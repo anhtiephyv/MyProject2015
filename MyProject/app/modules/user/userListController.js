@@ -2,7 +2,7 @@
     'use strict';
     debugger;
     app.controller('userListController', ['$scope', 'apiService', 'notificationService', '$filter', '$modal', '$rootScope', '$http',
-    function userListController($scope, apiService, notificationService, $filter,$modal,$rootScope,$http) {
+    function userListController($scope, apiService, notificationService, $filter, $modal, $rootScope, $http) {
 
         debugger;
         $scope.loading = true;
@@ -14,8 +14,9 @@
         $scope.deleteItem = deleteItem;
         $scope.selectAll = selectAll;
         $scope.create = create;
-        $scope.editCountry = editCountry;
+        $scope.editUser = editUser;
         $scope.deleteMultiple = deleteMultiple;
+        $scope.editAuthorized = editAuthorized;
         $scope.keyword = '';
         function deleteMultiple() {
             bootbox.confirm({
@@ -35,14 +36,14 @@
                     if (result) {
                         var listId = [];
                         $.each($scope.selected, function (i, item) {
-                            listId.push(item.CountryID);
+                            listId.push(item.UserID);
                         });
                         var config = {
                             params: {
                                 checkedList: JSON.stringify(listId)
                             }
                         }
-                        apiService.del('api/Country/deletemulti', config, function (result) {
+                        apiService.del('api/Users/deletemulti', config, function (result) {
                             notificationService.displaySuccess('Xóa thành công ' + result.data + ' bản ghi.');
                             search();
                         }, function (error) {
@@ -52,7 +53,7 @@
                 }
             });
             debugger;
-   
+
         }
 
         $scope.isAll = false;
@@ -119,7 +120,7 @@
                                 id: id
                             }
                         }
-                        apiService.del('/api/Country/delete/', config, function () {
+                        apiService.del('/api/Users/delete/', config, function () {
                             notificationService.displaySuccess('Đã xóa thành công.');
                             search();
                         },
@@ -137,7 +138,7 @@
             $scope.loading = true;
             var config = {
                 params: {
-                    keyword:$scope.keyword,
+                    keyword: $scope.keyword,
                     page: page,
                     pageSize: 10,
                     orderby: "UserID",
@@ -172,16 +173,16 @@
         $scope.search();
         function create() {
             var modalHtml = 'modules/user/userCreate.html';
-         
+
             require(
            [
-            '/app/modules/user/userCreateController.js', 'dualmultiselect'
+            '/app/modules/user/userCreateController.js'
            ],
            function (userCreateController) {
                $scope.myModalInstance = $modal.open({
                    templateUrl: modalHtml, // loads the template
-                  
-                  // windowClass: 'modal-dialog modal-sm', // windowClass - additional CSS class(es) to be added to a modal window template
+
+                   // windowClass: 'modal-dialog modal-sm', // windowClass - additional CSS class(es) to be added to a modal window template
                    controller: userCreateController,
                    windowClass: 'app-modal-window',
                    backdrop: true,
@@ -192,12 +193,12 @@
             }
 
         };
-        function editCountry(id) {
-            var modalHtml = 'modules/country/countryEdit.html';
+        function editUser(id) {
+            var modalHtml = 'modules/user/userEdit.html';
             debugger;
             require(
            [
-            '/app/modules/country/countryEditController.js'
+            '/app/modules/user/userEditController.js'
            ],
            function (countryEditController) {
                $scope.myModalInstance = $modal.open({
@@ -210,19 +211,44 @@
             $rootScope.modalClose = function () {
                 $scope.myModalInstance.close();
             }
-            $rootScope.countryId = id;
+            $rootScope.userId = id;
         };
-        $rootScope.listItem = [];
-        function getlistitems() {
-            apiService.get('/api/country/getlist/', null,
-        function (result) {
+        function editAuthorized(id) {
+            var modalHtml = 'modules/user/userAuthorized.html';
             debugger;
-            $rootScope.listItem = result.data;
-        },
-        function (result) {
-            notificationService.displayError(result.data);
-        })
+            require(
+           [
+            '/app/modules/user/userAuthorizedController.js', 'dualmultiselect'
+           ],
+           function (userAuthorizedController) {
+               apiService.get('/api/country/GetUnSelectedCountry?userID=' + id, null,
+function (result) {
+    $rootScope.listItem = result.data;
+    apiService.get('/api/country/GetSelectedCountry?userID=' + id, null,
+function (resultselect) {
+
+    $rootScope.selectItem = resultselect.data;
+    $scope.myModalInstance = $modal.open({
+        templateUrl: modalHtml,
+        controller: userAuthorizedController,
+        windowClass: 'app-modal-window',
+        backdrop: true,
+    });
+    $rootScope.modalClose = function () {
+        $scope.myModalInstance.close();
+    }
+    $rootScope.userId = id;
+},
+function (resultunselect) {
+    notificationService.displayError(resultunselect.data);
+})
+},
+function (result) {
+    notificationService.displayError(result.data);
+})
+
+           });
+
         };
-        getlistitems();
     }]);
 })(angular.module('MyApp'));

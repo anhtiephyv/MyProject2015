@@ -31,21 +31,21 @@ namespace MyProject.Api
         //}
         [Route("getlistpaging")]
         [HttpGet]
-        public HttpResponseMessage GetListPaging(HttpRequestMessage request, int page, int pageSize, string orderby, string sortDir, string filter = null)
+        public HttpResponseMessage GetListPaging(HttpRequestMessage request,string keyword, int page, int pageSize, string orderby, string sortDir, string filter = null)
         {
 
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                int totalRow = 0;
-
-                var model = _userManager.Users;
+                int totalRow = _userManager.Users.Count();
+                int skip = page * pageSize;
+                var model = _userManager.Users.Where(x => x.UserName.Contains(keyword) || x.FirstName.Contains(keyword) || x.LastName.Contains(keyword) || x.Email.Contains(keyword)).OrderByDescending(x => x.JoinDate).Take(pageSize).Skip(skip);
                   IEnumerable<AdminModel> modelVm = Mapper.Map<IEnumerable<ApplicationUser>, IEnumerable<AdminModel>>(model);
 
                   PaginationSet<AdminModel> pagedSet = new PaginationSet<AdminModel>()
                 {
                     Page = page,
-                    TotalCount = model.Count(),
+                    TotalCount = totalRow,
                     TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize),
                     Items = modelVm
                 };

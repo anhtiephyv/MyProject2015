@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Data.Models;
 namespace MyProject.Model
 {
     public class CountryModel
@@ -14,5 +15,6 @@ namespace MyProject.Model
         public string FileUploadType { get; set; }
         public byte[] FileUpload { get; set; }
         public int CountryStatus { get; set; }
+        public virtual IEnumerable<UserCountry> UserCountry { set; get; }
     }
 }

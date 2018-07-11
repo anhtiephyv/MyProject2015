@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Data.Models;
 namespace MyProject.Model
 {
     public class UsersModel
@@ -15,5 +16,6 @@ namespace MyProject.Model
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public virtual IEnumerable<UserCountry> UserCountry { set; get; }
     }
 }

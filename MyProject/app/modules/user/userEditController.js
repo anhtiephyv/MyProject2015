@@ -1,27 +1,27 @@
 ﻿(function (app) {
     'use strict';
 
-    app.controller('countryEditController', ['$scope', 'apiService', 'notificationService', '$filter', '$injector', '$rootScope',
+    app.controller('userEditController', ['$scope', 'apiService', 'notificationService', '$filter', '$injector', '$rootScope',
     function countryCreateController($scope, apiService, notificationService, $filter, $injector, $rootScope) {
-        $scope.country = {
-            CountryName: "",
-            CountryCronyms: "",
-            CountryFlag: null,
-            CountryStatus: "1",
-            FileUpLoad: null,
-            FileUploadName: null,
-            FileUploadType: null,
+        $scope.User = {
+            UserName: null,
+            FirstName: null,
+            LastName: null,
+            Email: null,
+            Phone: null,
+            Address: null,
+            UserID: null,
         }
         $scope.codeExist = false;
         $scope.dataErorr = false;
-        $scope.UpdateCountry =
-        function UpdateCountry() {
+        $scope.UpdateUser =
+        function UpdateUser() {
             if (!$scope.dataErorr) {
 
                 //$scope.product.MoreImages = JSON.stringify($scope.moreImages)
-                apiService.post('api/country/Update', $scope.country,
+                apiService.post('api/users/Update', $scope.User,
                     function (result) {
-                        notificationService.displaySuccess(result.data.CountryName + ' đã được cập nhật.');
+                        notificationService.displaySuccess(result.data.UserName + ' đã được cập nhật.');
 
                         debugger;
                         $rootScope.clearSearch();
@@ -56,7 +56,7 @@ function setFiles(element) {
 
 }
         $scope.checkcodeExist = function (element) {
-            apiService.get('api/Country/checkcodeExistEdit?CountryCode=' + element.value + '&Id=' + $rootScope.countryId, null,
+            apiService.get('api/Users/checkcodeExistEdit?UserName=' + element.value + '&Id=' + $rootScope.userId, null,
             function (result) {
                 debugger;
                 if (result.data) {
@@ -64,8 +64,7 @@ function setFiles(element) {
                     $scope.codeExist = result.data;
                     $scope.dataErorr = true;
                 }
-                else
-                {
+                else {
                     $scope.codeExist = result.data;
                     $scope.dataErorr = false;
                 }
@@ -76,11 +75,10 @@ function setFiles(element) {
 
         }
         function loadDetail() {
-            apiService.get('/api/country/detail/' + $rootScope.countryId, null,
+            apiService.get('/api/users/detail/' + $rootScope.userId, null,
             function (result) {
                 debugger;
-                $scope.country = result.data;
-                $scope.country.CountryStatus = result.data.CountryStatus.toString();
+                $scope.User = result.data;
             },
             function (result) {
                 notificationService.displayError(result.data);
@@ -92,5 +90,5 @@ function setFiles(element) {
         }
         loadDetail();
     }]);
-   
+
 })(angular.module('MyApp'));

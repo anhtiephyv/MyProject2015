@@ -21,5 +21,7 @@ namespace Data.Models
         public string FileUploadType { get; set; }
         public string CountryCronyms { get; set; }
         public int CountryStatus { get; set; }
+
+        public virtual IEnumerable<UserCountry> UserCountry { set; get; }
     }
 }

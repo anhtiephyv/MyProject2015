@@ -18,6 +18,7 @@ namespace Data.DBContext
         }
         public DbSet<Country> Country { get; set; }
         public DbSet<UserCountry> UserCountry { get; set; }
+        public DbSet<Users> UsersUndefined { get; set; }
         //  public DbSet<ApplicationUser> ApplicationIdentity  { get; set;}
         public static MyShopDBContext Create()
         {
@@ -30,6 +31,11 @@ namespace Data.DBContext
             builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId).ToTable("ApplicationUserLogins");
             builder.Entity<IdentityRole>().ToTable("ApplicationRoles");
             builder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("ApplicationUserClaims");
+           // modelBuilder.Entity<Post>()
+           //.HasOne(p => p.Blog)
+           //.WithMany(b => b.Posts)
+           //.HasForeignKey(p => p.BlogId)
+           //.HasConstraintName("ForeignKey_Post_Blog");
 
         }
     }

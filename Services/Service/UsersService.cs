@@ -24,6 +24,7 @@ namespace Service.Service
         IEnumerable<Users> GetMultiPaging(Expression<Func<Users, bool>> predicate, out int total, string orderBy = null,
             string sortDir = null, int index = 0, int size = 20, string[] includes = null);
         void Save();
+        bool checkCodeExist(string Code, int? ID);
     }
     public class UsersService : IUsersService
     {
@@ -76,6 +77,10 @@ namespace Service.Service
         public void Save()
         {
             _usersRepository.Save();
+        }
+        public bool checkCodeExist(string Code, int? ID)
+        {
+            return _usersRepository.checkCodeExist(Code, ID);
         }
     }
 }
