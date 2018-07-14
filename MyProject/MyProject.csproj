@@ -251,7 +251,9 @@
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="Base\PaginationSet.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -277,6 +279,7 @@
     <Content Include="app\common\notificationService.js" />
     <Content Include="app\Content\css\dualmultiselect.css" />
     <Content Include="app\Content\css\toastr.css" />
+    <Content Include="app\Content\img\favicon.ico" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-0.12.1.js" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-0.12.1.min.js" />
     <Content Include="app\Content\js\angular-ui\ui-bootstrap-custom-tpls-0.12.1.js" />
@@ -294,6 +297,8 @@
     <None Include="app\Content\js\_references.js" />
     <Content Include="app\directives\pagerDirective.js" />
     <Content Include="app\directives\pagerDirective.html" />
+    <Content Include="app\modules\home\changeProfile.html" />
+    <Content Include="app\modules\home\changeProfileController.js" />
     <Content Include="app\modules\user\userAuthorized.html" />
     <Content Include="app\modules\user\userCreate.html" />
     <Content Include="app\modules\user\userAuthorizedController.js" />
@@ -827,24 +832,6 @@
     <Content Include="app\modules\Include\headder.html" />
     <Content Include="app\index.html" />
     <Content Include="app\main.js" />
-    <Content Include="app\Project\angular-route.js" />
-    <Content Include="app\Project\angular-ui-router.js" />
-    <Content Include="app\Project\angular.js" />
-    <Content Include="app\Project\angularAMD.js" />
-    <Content Include="app\Project\angularAMD.min.js" />
-    <Content Include="app\Project\app.js" />
-    <Content Include="app\Project\home.html" />
-    <Content Include="app\Project\home.js" />
-    <Content Include="app\Project\home2.html" />
-    <Content Include="app\Project\index.html" />
-    <Content Include="app\Project\index.js" />
-    <Content Include="app\Project\lodash.js" />
-    <Content Include="app\Project\main.js" />
-    <Content Include="app\Project\ngload.js" />
-    <Content Include="app\Project\ngload.min.js" />
-    <Content Include="app\Project\require.js" />
-    <Content Include="app\Project\restangular.js" />
-    <Content Include="app\Project\underscore.js" />
     <Content Include="app\requirejs\angular.js" />
     <Content Include="app\requirejs\angularAMD.js" />
     <Content Include="app\requirejs\angularAMD.min.js" />
@@ -2280,6 +2267,7 @@
     <Content Include="app\Template\sbadmin\widgets.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Inbox.jpg" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
@@ -2475,8 +2463,6 @@
     <Content Include="app\Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="app\Content\js\angularAMD.min.map" />
-    <Content Include="app\Project\angularAMD.min.map" />
-    <Content Include="app\Project\ngload.min.map" />
     <Content Include="app\Content\js\ngload.min.map" />
     <Content Include="app\Template\sbadmin\assets\css\bootstrap.css.map" />
     <Content Include="app\Template\sbadmin\assets\css\bootstrap.min.css.map" />
@@ -2819,6 +2805,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\Country.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\Content\assets\jquery-file-upload\server\php\files\thumbnail\" />
@@ -2827,6 +2815,7 @@
     <Folder Include="app\Extension\service\" />
     <Folder Include="app\Template\NiceAdmin\assets\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

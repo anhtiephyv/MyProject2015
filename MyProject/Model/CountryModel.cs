@@ -15,6 +15,7 @@ namespace MyProject.Model
         public string FileUploadType { get; set; }
         public byte[] FileUpload { get; set; }
         public int CountryStatus { get; set; }
+        public int? NumberLine { get; set; }
         public virtual IEnumerable<UserCountry> UserCountry { set; get; }
     }
 }

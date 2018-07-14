@@ -25,6 +25,7 @@ namespace Data.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public int? UserStatus { get; set; }
         public virtual IEnumerable<UserCountry> UserCountry { set; get; }
     }
 }

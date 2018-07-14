@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyProject.Models;
 using Data.Models;
+using System.Web.Security;
 namespace MyProject.Controllers
 {
     [Authorize]
@@ -101,6 +102,7 @@ namespace MyProject.Controllers
             {
                 return View("Error");
             }
+      //      FormsAuthentication.Timeout = TimeSpan.FromSeconds(20);
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 

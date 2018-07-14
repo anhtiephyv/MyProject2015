@@ -13,7 +13,7 @@
         $scope.clearSearch = clearSearch;
         $scope.deleteItem = deleteItem;
         $scope.selectAll = selectAll;
-
+        $scope.keyword = '';
         $scope.deleteMultiple = deleteMultiple;
 
         function deleteMultiple() {
@@ -82,6 +82,7 @@
             $scope.loading = true;
             var config = {
                 params: {
+                    keyword: $scope.keyword,
                     page: page,
                     pageSize: 1,
                     orderby: "UserName",

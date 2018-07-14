@@ -11,6 +11,7 @@
             FileUpLoad: null,
             FileUploadName: null,
             FileUploadType: null,
+            NumberLine: null,
         }
         $scope.codeExist = false;
         $scope.dataErorr = false;
@@ -47,6 +48,13 @@ function setFiles(element) {
         $scope.country.FileUploadName = event.target.files[0].name;
         $scope.country.FileUploadType = event.target.files[0].type;
         reader.readAsDataURL(event.target.files[0]);
+        var readerText = new FileReader();
+        readerText.onload = function (loadEvent) {
+            debugger;
+            $scope.country.NumberLine = loadEvent.target.result.split("\n").length;
+
+        }
+        readerText.readAsText(event.target.files[0]);
     }
     else {
         $scope.country.FileUpLoad = null;

@@ -76,7 +76,7 @@
 
                 var adminUser = manager.FindByEmail("tiepnv022093@gmail.com.com");
 
-                manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+           //     manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
             }
 
             //if (context.ApplicationGroups.Count() == 0)

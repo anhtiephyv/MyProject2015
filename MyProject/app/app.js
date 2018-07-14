@@ -175,7 +175,7 @@ define(['angularAMD', 'angular-ui-router', 'bootstrapUi'], function (angularAMD)
                             .state('admin_list', angularAMD.route({
                                 url: '/admin_list',
                                 parent: 'base',
-                                templateUrl: '/app/modules/admin/userList.html',
+                                templateUrl: '/app/modules/admin/adminList.html',
                                 controller: 'adminListController',
                                 controllerUrl: '/app/modules/admin/adminListController.js',
                             }))
@@ -206,5 +206,6 @@ define(['angularAMD', 'angular-ui-router', 'bootstrapUi'], function (angularAMD)
     // Bootstap the application.
     angularAMD.bootstrap(app);
     // Return the application.
+    
     return app;
 });

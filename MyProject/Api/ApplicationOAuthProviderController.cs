@@ -34,34 +34,30 @@ namespace MyProject.Api
         public override async Task GrantResourceOwnerCredentials
         (OAuthGrantResourceOwnerCredentialsContext context)
         {
-            /*** Replace below user authentication code as per your Entity Framework Model ***
-            using (var obj = new UserDBEntities())
+
+        
+        
+            var userStore = new UserStore<ApplicationUser>(new MyShopDBContext());
+            var manager = new UserManager<ApplicationUser>(userStore);
+            ApplicationUser user = await manager.FindAsync(context.UserName, context.Password);
+            if (user != null)
             {
-                
-                tblUserMaster entry = obj.tblUserMasters.Where
-                <tblUserMaster>(record => 
-                record.User_ID == context.UserName && 
-                record.User_Password == context.Password).FirstOrDefault();
+                ClaimsIdentity oAuthIdentity =
+                new ClaimsIdentity(context.Options.AuthenticationType);
+                ClaimsIdentity cookiesIdentity =
+                new ClaimsIdentity(context.Options.AuthenticationType);
 
-                if (entry == null)
-                {
-                    context.SetError("invalid_grant", 
-                    "The user name or password is incorrect.");
-                    return;
-                }                
+                AuthenticationProperties properties = CreateProperties(context.UserName);
+                AuthenticationTicket ticket =
+                new AuthenticationTicket(oAuthIdentity, properties);
+                context.Validated(ticket);
+                context.Request.Context.Authentication.SignIn(cookiesIdentity);
             }
-            */
-
-            ClaimsIdentity oAuthIdentity = 
-            new ClaimsIdentity(context.Options.AuthenticationType);
-            ClaimsIdentity cookiesIdentity = 
-            new ClaimsIdentity(context.Options.AuthenticationType);
-
-            AuthenticationProperties properties = CreateProperties(context.UserName);
-            AuthenticationTicket ticket = 
-            new AuthenticationTicket(oAuthIdentity, properties);
-            context.Validated(ticket);
-            context.Request.Context.Authentication.SignIn(cookiesIdentity);
+            else
+            {
+                context.SetError("invalid_grant", "The user name or password is incorrect.");
+                return;
+            }
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)

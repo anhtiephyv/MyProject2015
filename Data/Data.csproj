@@ -95,6 +95,14 @@
     <Compile Include="Migrations\201807111355390_InitialCreate.Designer.cs">
       <DependentUpon>201807111355390_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807140643507_update_country.cs" />
+    <Compile Include="Migrations\201807140643507_update_country.Designer.cs">
+      <DependentUpon>201807140643507_update_country.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807141412325_add_userstatus.cs" />
+    <Compile Include="Migrations\201807141412325_add_userstatus.Designer.cs">
+      <DependentUpon>201807141412325_add_userstatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -116,6 +124,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807111355390_InitialCreate.resx">
       <DependentUpon>201807111355390_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807140643507_update_country.resx">
+      <DependentUpon>201807140643507_update_country.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807141412325_add_userstatus.resx">
+      <DependentUpon>201807141412325_add_userstatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

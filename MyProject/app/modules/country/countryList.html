@@ -36,6 +36,7 @@
                 <th style="width:20%">Tên</th>
                 <th style="width:10%">Viết tắt</th>
                 <th style="width: 10%">Cờ</th>
+                <th style="width: 10%">Số dòng</th>
                 <th style="width: 15%">File đính kèm</th>
                 <th style="width: 10%">Trạng thái</th>
                 <th style="width: 10%"></th>
@@ -49,6 +50,7 @@
                     {{item.CountryCronyms}}
                 </td>
                 <td><img src="data:image/jpeg;base64,{{item.CountryFlag}}" width="32px" height="32px"></td>
+                <td>{{item.NumberLine}}</td>
                 <td>
                     <!--<a title="{{item.FileUploadName}}" ng-click="downloadfile(item.CountryID)">{{item.FileUploadName}}</a>-->
                     <a href="../api/Download/getFile/{{item.CountryID}}" target="_blank">{{item.FileUploadName}}</a>

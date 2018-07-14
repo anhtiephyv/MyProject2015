@@ -79,65 +79,26 @@ define(['app'], function (app) {
         }
 
     }]);
-    app.directive("filetype", [function () {
-        return {
-            scope: {
-                filetype: "=",
-            },
-            restrict: 'A',
-            link: function (scope, element, attributes) {
-                debugger;
-                element.bind("change", function (changeEvent) {
-                    debugger;
 
-                    if (changeEvent.target.files[0] != undefined && changeEvent.target.files[0] != null) {
-                        var reader = new FileReader();
-                        reader.onload = function (loadEvent) {
-                            scope.$apply(function () {
-                                scope.filetype = hangeEvent.target.files[0].type;
-                                var rawLog = reader.result;
-                            });
-                        }
-                        reader.readAsDataURL(changeEvent.target.files[0]);
-                    }
-                    else {
-                        scope.filetype = null;
-                    }
+    app.directive('nxEqual', function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, elem, attrs, model) {
+                if (!attrs.nxEqual) {
+                    console.error('nxEqual expects a model as an argument!');
+                    return;
+                }
+                scope.$watch(attrs.nxEqual, function (value) {
+                    model.$setValidity('nxEqual', value === model.$viewValue);
+                });
+                model.$parsers.push(function (value) {
+                    var isValid = value === scope.$eval(attrs.nxEqual);
+                    model.$setValidity('nxEqual', isValid);
+                    return isValid ? value : undefined;
                 });
             }
-        }
-
-    }]);
-    app.directive("filename", [function () {
-        return {
-            scope: {
-                filename: "=",
-            },
-            restrict: 'A',
-            link: function (scope, element, attributes) {
-                debugger;
-                element.bind("change", function (changeEvent) {
-                    debugger;
-
-                    if (changeEvent.target.files[0] != undefined && changeEvent.target.files[0] != null) {
-                        var reader = new FileReader();
-                        reader.onload = function (loadEvent) {
-                            scope.$apply(function () {
-                                scope.filename = hangeEvent.target.files[0].name;
-                                var rawLog = reader.result;
-                                console.log(rawLog);
-                            });
-                        }
-                        reader.readAsDataURL(changeEvent.target.files[0]);
-                    }
-                    else {
-                        scope.filename = null;
-                    }
-                });
-            }
-        }
-
-    }]);
+        };
+    });
     app.directive("filedirective", [function () {
         return {
             scope: {

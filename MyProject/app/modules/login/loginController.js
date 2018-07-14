@@ -13,10 +13,11 @@
         $scope.loginSubmit = function () {
             authService.userAuthentication($scope.loginData.userName, $scope.loginData.password).then(
 function success(response) {
+    debugger;
     // do successful stuff here  
     debugger;
     localStorage.setItem('TokenInfo', response.data);
-
+//sessionStorage.set
     userInfo = {
         accessToken: response.data.access_token,
         userName: response.data.userName
@@ -25,8 +26,15 @@ function success(response) {
     authData.authenticationData.IsAuthenticated = true;
     authData.authenticationData.userName = response.data.userName;
     authData.authenticationData.accessToken = response.data.access_token;
+    localStorage.setItem('userName', response.data.userName);
     var stateService = $injector.get('$state');
     stateService.go('home');
+    //window.onunload = function () {
+    //    debugger;
+    //    localStorage.removeItem('TokenInfo');
+    //}
+       
+  
 },
 function err(response) {
     debugger;
