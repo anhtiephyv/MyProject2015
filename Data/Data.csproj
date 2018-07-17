@@ -103,6 +103,10 @@
     <Compile Include="Migrations\201807141412325_add_userstatus.Designer.cs">
       <DependentUpon>201807141412325_add_userstatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807160601452_them_last_update.cs" />
+    <Compile Include="Migrations\201807160601452_them_last_update.Designer.cs">
+      <DependentUpon>201807160601452_them_last_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807141412325_add_userstatus.resx">
       <DependentUpon>201807141412325_add_userstatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807160601452_them_last_update.resx">
+      <DependentUpon>201807160601452_them_last_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

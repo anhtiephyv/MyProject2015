@@ -15,7 +15,6 @@ namespace MyProject.Controllers
         {
             _userService = UserService;
         }
-        [HttpPost]
         public bool Index(string jsonData)
         {
             var UserName = JObject.Parse(jsonData)["userName"].ToString();
@@ -26,7 +25,7 @@ namespace MyProject.Controllers
             {
                 FormsAuthentication.SetAuthCookie(user.UserName, false);
 
-                var authTicket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddMinutes(10), false, "Admin,Editor");
+                var authTicket = new FormsAuthenticationTicket(1, user.UserName, DateTime.Now, DateTime.Now.AddSeconds(10), false, "Admin,Editor");
                 string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
                 var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
                 HttpContext.Response.Cookies.Add(authCookie);

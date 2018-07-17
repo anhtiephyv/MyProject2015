@@ -16,6 +16,32 @@ namespace MyProject.Model
         public byte[] FileUpload { get; set; }
         public int CountryStatus { get; set; }
         public int? NumberLine { get; set; }
+        public DateTime LastUpdate { get; set; }
+        public string DateDiff
+        {
+            get
+            {
+                var DatediffDateTime = DateTime.Now - LastUpdate;
+                var StringResult = string.Empty;
+                if (DatediffDateTime.Days != 0)
+                {
+                    StringResult += DatediffDateTime.Days + " ngày, ";
+                }
+                if (DatediffDateTime.Hours != 0)
+                {
+                    StringResult += DatediffDateTime.Hours + " giờ, ";
+                }
+                if (DatediffDateTime.Minutes != 0)
+                {
+                    StringResult += DatediffDateTime.Minutes + " phút, ";
+                }
+               
+                    StringResult += DatediffDateTime.Seconds + " giây";
+                
+
+                return StringResult;
+            }
+        }
         public virtual IEnumerable<UserCountry> UserCountry { set; get; }
     }
 }

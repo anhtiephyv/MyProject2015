@@ -29,6 +29,7 @@ namespace Service.Service
         IEnumerable<Country> GetMultiPaging(Expression<Func<Country, bool>> predicate, out int total, string orderBy = null,
             string sortDir = null, int index = 0, int size = 20, string[] includes = null);
         void Save();
+        IEnumerable<Country> getCountrybyUserName(string userName);
         bool checkCodeExist(string Code, int? ID);
     }
     public class CountryService : ICountryService
@@ -95,6 +96,10 @@ namespace Service.Service
         public bool checkCodeExist(string Code, int? ID)
         {
             return _CountryRepository.checkCodeExist(Code,ID);
+        }
+        public IEnumerable<Country> getCountrybyUserName(string userName)
+        {
+            return _CountryRepository.getCountrybyUserName(userName).OrderByDescending(x=> x.LastUpdate);
         }
     }
 }

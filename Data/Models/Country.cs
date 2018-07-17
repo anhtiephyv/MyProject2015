@@ -22,6 +22,7 @@ namespace Data.Models
         public string CountryCronyms { get; set; }
         public int CountryStatus { get; set; }
         public int? NumberLine { get; set; }
+        public DateTime LastUpdate { get; set; }
         public virtual IEnumerable<UserCountry> UserCountry { set; get; }
     }
 }

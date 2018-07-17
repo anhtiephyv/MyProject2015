@@ -67,7 +67,7 @@ namespace MyProject.Api
                 else
                 {
                     var modelVm = Mapper.Map<CountryModel, Country>(countryVm);
-
+                    modelVm.LastUpdate = DateTime.Now;
                     _Country.Create(modelVm);
                     _Country.Save();
 
@@ -147,7 +147,7 @@ namespace MyProject.Api
                 else
                 {
                     var modelVm = Mapper.Map<CountryModel, Country>(countryVm);
-
+                    modelVm.LastUpdate = DateTime.Now;
                     _Country.Update(modelVm);
                     _Country.Save();
 
@@ -163,7 +163,7 @@ namespace MyProject.Api
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             _Country.Delete(id);
-
+            _Country.Save();
             return request.CreateResponse(HttpStatusCode.OK, id);
         }
         [Route("deletemulti")]

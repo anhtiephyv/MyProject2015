@@ -11,7 +11,7 @@ namespace Data.DBContext
     // Context của tôi kế thừa từ thằng ApplicationUser để sau này sẽ tự động create các bảng liên quan đến user
     public class MyShopDBContext : IdentityDbContext<ApplicationUser>
     {
-        public MyShopDBContext() : base("MyShop", throwIfV1Schema: false)
+        public MyShopDBContext() : base("MyShop")
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
