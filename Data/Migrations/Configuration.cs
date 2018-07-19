@@ -59,14 +59,14 @@
                 UserName = "Administrator",
                 Email = "tiepnv022093@gmail.com",
                 EmailConfirmed = true,
-                FirstName = "Nguyễn Văn",
-                LastName = "Tiệp",
+                FirstName = "Nguyen Van",
+                LastName = "Tiep",
                 Level = 1,
                 JoinDate = DateTime.Now
             };
             if (manager.Users.Count(x => x.UserName == "Administrator") == 0)
             {
-                manager.Create(user, "anhtiep123");
+                manager.Create(user, "Ab@123456");
 
                 if (!roleManager.Roles.Any())
                 {

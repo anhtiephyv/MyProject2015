@@ -65,11 +65,7 @@ D:\MyProject\MyProject2015\Data\bin\Debug\Microsoft.Owin.Security.xml
 D:\MyProject\MyProject2015\Data\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 D:\MyProject\MyProject2015\Data\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 D:\MyProject\MyProject2015\Data\bin\Debug\Newtonsoft.Json.xml
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.InitialCreate.resources
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.update_country.resources
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.add_userstatus.resources
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.csproj.GenerateResource.Cache
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.dll
 D:\MyProject\MyProject2015\Data\obj\Debug\Data.pdb
-D:\MyProject\MyProject2015\Data\obj\Debug\Data.Migrations.them_last_update.resources

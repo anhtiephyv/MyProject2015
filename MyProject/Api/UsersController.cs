@@ -37,7 +37,7 @@ namespace MyProject.Api
             {
                 HttpResponseMessage response = null;
                 int totalRow = 0;
-                var model = _Users.GetMultiPaging(x => x.FirstName.Contains(keyword) || x.LastName.Contains(keyword) || x.UserName.Contains(keyword) || string.IsNullOrEmpty(keyword) || x.Phone.Contains(keyword) || x.Email.Contains(keyword) || x.Address.Contains(keyword) || x.LastName.Contains(keyword), out totalRow, orderby, sortDir, page, pageSize, null);
+                var model = _Users.GetMultiPaging(x => x.FirstName.Contains(keyword) || x.LastName.Contains(keyword) || x.UserName.Contains(keyword) || string.IsNullOrEmpty(keyword) || x.Phone.Contains(keyword) || x.Email.Contains(keyword) || x.Address.Contains(keyword) || x.LastName.Contains(keyword) || x.UserName.Contains(keyword), out totalRow, orderby, sortDir, page, pageSize, null);
                 IEnumerable<UsersModel> modelVm = Mapper.Map<IEnumerable<Users>, IEnumerable<UsersModel>>(model);
 
                 PaginationSet<UsersModel> pagedSet = new PaginationSet<UsersModel>()

@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using MyProject.Mapping;
 using System.Web.Security;
+using System.Security.Cryptography;
 namespace MyProject
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -24,15 +25,22 @@ namespace MyProject
         // Cái này dùng để gán các quyền cho role
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
         {
-            var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
-            if (authCookie != null)
+            try
             {
-                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-                if (authTicket != null && !authTicket.Expired)
+                var authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+                if (authCookie != null)
                 {
-                    var roles = authTicket.UserData.Split(',');
-                    HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new FormsIdentity(authTicket), roles);
+                    FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                    if (authTicket != null && !authTicket.Expired)
+                    {
+                        var roles = authTicket.UserData.Split(',');
+                        HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(new FormsIdentity(authTicket), roles);
+                    }
                 }
+            }
+            catch (CryptographicException cex)
+            {
+                FormsAuthentication.SignOut();
             }
         }
     }

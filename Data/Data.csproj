@@ -91,21 +91,9 @@
     <Compile Include="Base\IUnitOfWork.cs" />
     <Compile Include="Base\UnitOfWork .cs" />
     <Compile Include="DBContext\MyShopDBContext.cs" />
-    <Compile Include="Migrations\201807111355390_InitialCreate.cs" />
-    <Compile Include="Migrations\201807111355390_InitialCreate.Designer.cs">
-      <DependentUpon>201807111355390_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807140643507_update_country.cs" />
-    <Compile Include="Migrations\201807140643507_update_country.Designer.cs">
-      <DependentUpon>201807140643507_update_country.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807141412325_add_userstatus.cs" />
-    <Compile Include="Migrations\201807141412325_add_userstatus.Designer.cs">
-      <DependentUpon>201807141412325_add_userstatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807160601452_them_last_update.cs" />
-    <Compile Include="Migrations\201807160601452_them_last_update.Designer.cs">
-      <DependentUpon>201807160601452_them_last_update.cs</DependentUpon>
+    <Compile Include="Migrations\201807171342501_InitialCreate.cs" />
+    <Compile Include="Migrations\201807171342501_InitialCreate.Designer.cs">
+      <DependentUpon>201807171342501_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
@@ -120,23 +108,16 @@
     <Compile Include="Repository\AdminRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807111355390_InitialCreate.resx">
-      <DependentUpon>201807111355390_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807140643507_update_country.resx">
-      <DependentUpon>201807140643507_update_country.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807141412325_add_userstatus.resx">
-      <DependentUpon>201807141412325_add_userstatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807160601452_them_last_update.resx">
-      <DependentUpon>201807160601452_them_last_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807171342501_InitialCreate.resx">
+      <DependentUpon>201807171342501_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

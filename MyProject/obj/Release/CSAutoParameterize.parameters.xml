@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="MyShop-Web.config Connection String" description="MyShop Connection String used in web.config by the application to access the database." defaultValue="Data Source=den1.mssql6.gear.host;User Id=myshop3; Password=Ab@123456;Initial Catalog=Myshop;Integrated Security=True;MultipleActiveResultSets=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="D:\\MyProject\\MyProject2015\\MyProject\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyShop']/@connectionString" />
-  </parameter>
-</parameters>

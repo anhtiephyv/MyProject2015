@@ -977,6 +977,7 @@
     <None Include="Properties\PublishProfiles\quangtien - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\quangtien1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\quangtien1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\quangtienpublish.pubxml" />
     <None Include="Properties\PublishProfiles\QuangTienWeb.pubxml" />
     <None Include="Properties\PublishProfiles\quantien - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\quantien - Web Deploy.pubxml" />

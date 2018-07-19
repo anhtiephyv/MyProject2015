@@ -140,7 +140,7 @@
                     keyword:$scope.keyword,
                     page: page,
                     pageSize: 10,
-                    orderby: "CountryID",
+                    orderby: "LastUpdate",
                     sortDir: "desc",
                     filter: $scope.filterExpression
                 }
